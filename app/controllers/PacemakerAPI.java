@@ -10,6 +10,7 @@ import models.*;
 public class PacemakerAPI extends Controller
 {  
 
+  //Users
   public static Result  users()
   {
     List<User> users = User.findAll();
@@ -57,6 +58,58 @@ public class PacemakerAPI extends Controller
       user.update(updatedUser);
       user.save();
       result = ok(renderUser(user));
+    }
+    return result;
+  }
+  
+  //Activities
+  public static Result  activities()
+  {
+    List<Activity> activities = Activity.findAll();
+    return ok(renderActivity(activities));
+  }
+
+  public static Result activity(Long id)
+  {
+    Activity activity = Activity.findById(id);  
+    return activity==null? notFound() : ok(renderActivity(activity)); 
+  }
+
+  public static Result createActivity()
+  {
+    Activity activity = renderActivity(request().body().asJson().toString());
+    activity.save();
+    return ok(renderActivity(activity));
+  }
+
+  public static Result deleteActivity(Long id)
+  {
+    Result result = notFound();
+    Activity activity = Activity.findById(id);
+    if (activity != null)
+    {
+      activity.delete();
+      result = ok();
+    }
+    return result;
+  }
+
+  public static Result deleteAllActivities()
+  {
+    Activity.deleteAll();
+    return ok();
+  }
+
+  public static Result updateActivity(Long id)
+  {
+    Result result = notFound();
+    Activity activity = Activity.findById(id);
+    if (activity != null)
+    {
+      Activity updatedActivity = renderActivity(request().body().asJson().toString());
+      activity.update(updatedActivity);
+      activity.save();
+      result = ok(renderUser(activity));
     }
     return result;
   }
