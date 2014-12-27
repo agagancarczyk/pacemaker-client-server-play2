@@ -2,6 +2,8 @@ name := "pacemakerplay"
 
 version := "1.0-SNAPSHOT"
 
+libraryDependencies += filters
+
 libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
