@@ -3,23 +3,22 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                                          controllers.Application.index()
 
-GET     /api/users                            controllers.PacemakerAPI.users()
-DELETE  /api/users                            controllers.PacemakerAPI.deleteAllUsers()
-POST    /api/users                            controllers.PacemakerAPI.createUser()
+GET     /api/users                                 controllers.PacemakerAPI.users()
+DELETE  /api/users                                 controllers.PacemakerAPI.deleteAllUsers()
+POST    /api/users                                 controllers.PacemakerAPI.createUser()
 
-GET    /api/users/:id                         controllers.PacemakerAPI.user(id: Long)
-DELETE /api/users/:id                         controllers.PacemakerAPI.deleteUser(id: Long)
-PUT    /api/users/:id                         controllers.PacemakerAPI.updateUser(id: Long)
+GET     /api/users/:id                             controllers.PacemakerAPI.user(id: Long)
+DELETE  /api/users/:id                             controllers.PacemakerAPI.deleteUser(id: Long)
+PUT     /api/users/:id                             controllers.PacemakerAPI.updateUser(id: Long)
 
-GET     /api/activities                       controllers.PacemakerAPI.activities()
-DELETE  /api/activities                       controllers.PacemakerAPI.deleteAllActivities()
-POST    /api/activities                       controllers.PacemakerAPI.createActivity()
+GET     /api/users/:userId/activities              controllers.PacemakerAPI.activities(userId: Long)
+POST    /api/users/:userId/activities              controllers.PacemakerAPI.createActivity(userId: Long)
 
-GET    /api/activities/:id                    controllers.PacemakerAPI.activity(id: Long)
-DELETE /api/activities/:id                    controllers.PacemakerAPI.deleteActivity(id: Long)
-PUT    /api/activities/:id                    controllers.PacemakerAPI.updateActivity(id: Long)
+GET     /api/users/:userId/activities/:activityId  controllers.PacemakerAPI.activity(userId: Long, activityId:Long)
+DELETE  /api/users/:userId/activities/:activityId  controllers.PacemakerAPI.deleteActivity(userId: Long, activityId:Long)
+PUT     /api/users/:userId/activities/:activityId  controllers.PacemakerAPI.updateActivity(userId: Long, activityId:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

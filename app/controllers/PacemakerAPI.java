@@ -63,54 +63,87 @@ public class PacemakerAPI extends Controller
   }
   
   //Activities
-  public static Result  activities()
-  {
-    List<Activity> activities = Activity.findAll();
-    return ok(renderActivity(activities));
+  public static Result activities (Long userId)
+  {  
+    User p = User.findById(userId);
+    return ok(renderActivity(p.activities));
   }
 
-  public static Result activity(Long id)
-  {
-    Activity activity = Activity.findById(id);  
-    return activity==null? notFound() : ok(renderActivity(activity)); 
-  }
+  public static Result createActivity (Long userId)
+  { 
+    User    user      = User.findById(userId);
+    Activity activity = renderActivity(request().body().asJson().toString());  
 
-  public static Result createActivity()
-  {
-    Activity activity = renderActivity(request().body().asJson().toString());
-    activity.save();
+    user.activities.add(activity);
+    user.save();
+
     return ok(renderActivity(activity));
   }
 
-  public static Result deleteActivity(Long id)
-  {
-    Result result = notFound();
-    Activity activity = Activity.findById(id);
-    if (activity != null)
-    {
-      activity.delete();
-      result = ok();
-    }
-    return result;
-  }
+  public static Result activity (Long userId, Long activityId)
+  {  
+    User    user      = User.findById(userId);
+    Activity activity = Activity.findById(activityId);
 
-  public static Result deleteAllActivities()
-  {
-    Activity.deleteAll();
-    return ok();
-  }
-
-  public static Result updateActivity(Long id)
-  {
-    Result result = notFound();
-    Activity activity = Activity.findById(id);
-    if (activity != null)
+    if (activity == null)
     {
-      Activity updatedActivity = renderActivity(request().body().asJson().toString());
-      activity.update(updatedActivity);
-      activity.save();
-      result = ok(renderUser(activity));
+      return notFound();
     }
-    return result;
-  }
+    else
+    {
+      return user.activities.contains(activity)? ok(renderActivity(activity)): badRequest();
+    }
+  }  
+
+  public static Result deleteActivity (Long userId, Long activityId)
+  {  
+    User    user      = User.findById(userId);
+    Activity activity = Activity.findById(activityId);
+    if (activity == null)
+    {
+      return notFound();
+    }
+    else
+    {
+      if (user.activities.contains(activity))
+      {
+        user.activities.remove(activity);
+        activity.delete();
+        user.save();
+        return ok();
+      }
+      else
+      {
+        return badRequest();
+      }
+
+    }
+  }  
+
+  public static Result updateActivity (Long userId, Long activityId)
+  {
+    User    user      = User.findById(userId);
+    Activity activity = Activity.findById(activityId);
+    if (activity == null)
+    {
+      return notFound();
+    }
+    else
+    {
+      if (user.activities.contains(activity))
+      {
+        Activity updatedActivity = renderActivity(request().body().asJson().toString());
+        activity.distance = updatedActivity.distance;
+        activity.location = updatedActivity.location;
+        activity.type     = updatedActivity.type;
+
+        activity.save();
+        return ok(renderActivity(updatedActivity));
+      }
+      else
+      {
+        return badRequest();
+      }
+    }
+  }   
 }
