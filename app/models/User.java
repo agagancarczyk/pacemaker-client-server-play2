@@ -19,17 +19,19 @@ public class User extends Model
   public String lastname;
   public String email;
   public String password;
+  public String nationality; 
 
   public User()
   {
   }
 
-  public User(String firstname, String lastname, String email, String password)
+  public User(String firstname, String lastname, String email, String password, String nationality)
   {
     this.firstname = firstname;
     this.lastname  = lastname;
     this.email     = email;
     this.password  = password;
+    this.nationality = nationality;
   }
 
   public void update (User user)
@@ -38,6 +40,7 @@ public class User extends Model
     this.lastname  = user.lastname;
     this.email     = user.email;
     this.password  = user.password;
+    this.nationality = user.nationality;
   }
 
   public String toString()
@@ -47,7 +50,8 @@ public class User extends Model
         .add("Firstname", firstname)
         .add("Lastname", lastname)
         .add("Email", email)
-        .add("Passwrod", password).toString();
+        .add("Passwrod", password)
+        .add("Nationality", nationality).toString();
   }
 
   @Override
@@ -58,7 +62,9 @@ public class User extends Model
       final User other = (User) obj;
       return Objects.equal(firstname, other.firstname) 
           && Objects.equal(lastname, other.lastname)
-          && Objects.equal(email, other.email);
+          && Objects.equal(email, other.email)
+          && Objects.equal(password, other.password)
+          && Objects.equal(nationality, other.nationality);
     }
     else
     {
