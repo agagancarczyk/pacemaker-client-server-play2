@@ -1,0 +1,30 @@
+# Users
+users:
+
+    - !!models.User
+        email:      homer@simpson.com
+        firstname:  homer
+        lastname:   simpson        
+        password:   secret
+        nationality : american
+
+    - !!models.User
+        email:      bart@simpson.com
+        firstname:  bart
+        lastname:   simpson        
+        password:   secret
+        nationality : american
+
+    - !!models.User
+        email:      marge@simpson.com
+        firstname:  marge
+        lastname:   simpson        
+        password:   secret  
+        nationality : american 
+
+    - !!models.User
+        email:      lisae@simpson.com
+        firstname:  lisa
+        lastname:   simpson        
+        password:   secret 
+        nationality : american

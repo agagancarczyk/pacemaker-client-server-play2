@@ -11,13 +11,15 @@ create table my_activity (
   distance                  double,
   date                      timestamp,
   duration                  varchar(255),
+  average_speed             double,
+  calories_burned           integer,
   constraint pk_my_activity primary key (id))
 ;
 
 create table my_location (
   id                        bigint not null,
   latitude                  float,
-  longitude                 float,
+  longtitude                float,
   activity_id               bigint,
   constraint pk_my_location primary key (id))
 ;
