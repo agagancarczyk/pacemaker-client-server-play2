@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -23,18 +24,25 @@ public class Activity extends Model
   public double distance;
   public DateTime date;
   public String duration; 
+  public double averageSpeed;
+  public int caloriesBurned; 
+  
+  @OneToMany(cascade=CascadeType.ALL)
+  public List<Location> route = new ArrayList<>();
   
   public Activity()
   {
   }
 
-  public Activity(String type, String location, double distance, DateTime date, String duration)
+  public Activity(String type, String location, double distance, DateTime date, String duration, double averageSpeed, int caloriesBurned)
   {
     this.type = type;
     this.location  = location;
     this.distance     = distance;
     this.date  = date;
     this.duration = duration;
+    this.averageSpeed = averageSpeed;
+    this.caloriesBurned = caloriesBurned;
   }
 
   public void update (Activity activity)
@@ -44,6 +52,8 @@ public class Activity extends Model
     this.distance     = activity.distance;
     this.date  = activity.date;
     this.duration = activity.duration;
+    this.averageSpeed = activity.averageSpeed;
+    this.caloriesBurned = activity.caloriesBurned; 
   }
 
   public String toString()
@@ -54,7 +64,10 @@ public class Activity extends Model
         .add("Location", location)
         .add("Distance", distance)
         .add("Date", date)
-        .add("Duration", duration).toString();
+        .add("Duration", duration)
+        .add("AverageSpeed", averageSpeed)
+        .add("CaloriesBurned", caloriesBurned)
+        .add("Route", route).toString();
   }
 
   @Override
@@ -67,7 +80,10 @@ public class Activity extends Model
           && Objects.equal(location, other.location)
           && Objects.equal(distance, other.distance)
           && Objects.equal(date, other.date)
-          && Objects.equal(duration, other.duration);
+          && Objects.equal(duration, other.duration)
+          && Objects.equal(averageSpeed, other.averageSpeed)
+          && Objects.equal(caloriesBurned, other.caloriesBurned)
+          && Objects.equal(route, other.route);
     }
     else
     {

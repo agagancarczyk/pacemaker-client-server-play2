@@ -5,12 +5,21 @@
 
 create table my_activity (
   id                        bigint not null,
+  user_id                   bigint not null,
   type                      varchar(255),
   location                  varchar(255),
-  distance                  float,
+  distance                  double,
   date                      timestamp,
   duration                  varchar(255),
   constraint pk_my_activity primary key (id))
+;
+
+create table my_location (
+  id                        bigint not null,
+  latitude                  float,
+  longitude                 float,
+  activity_id               bigint,
+  constraint pk_my_location primary key (id))
 ;
 
 create table my_user (
@@ -25,18 +34,32 @@ create table my_user (
 
 create sequence my_activity_seq;
 
+create sequence my_location_seq;
+
 create sequence my_user_seq;
 
+alter table my_activity add constraint fk_my_activity_my_user_1 foreign key (user_id) references my_user (id) on delete restrict on update restrict;
+create index ix_my_activity_my_user_1 on my_activity (user_id);
+alter table my_location add constraint fk_my_location_activity_2 foreign key (activity_id) references my_activity (id) on delete restrict on update restrict;
+create index ix_my_location_activity_2 on my_location (activity_id);
 
 
 
 # --- !Downs
 
-drop table if exists my_activity cascade;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists my_user cascade;
+drop table if exists my_activity;
+
+drop table if exists my_location;
+
+drop table if exists my_user;
+
+SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists my_activity_seq;
+
+drop sequence if exists my_location_seq;
 
 drop sequence if exists my_user_seq;
 

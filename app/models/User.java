@@ -56,7 +56,8 @@ public class User extends Model
         .add("Lastname", lastname)
         .add("Email", email)
         .add("Passwrod", password)
-        .add("Nationality", nationality).toString();
+        .add("Nationality", nationality)
+        .add("Activities", activities).toString();
   }
 
   @Override
@@ -69,7 +70,8 @@ public class User extends Model
           && Objects.equal(lastname, other.lastname)
           && Objects.equal(email, other.email)
           && Objects.equal(password, other.password)
-          && Objects.equal(nationality, other.nationality);
+          && Objects.equal(nationality, other.nationality)
+          && Objects.equal(activities, other.activities);
     }
     else
     {

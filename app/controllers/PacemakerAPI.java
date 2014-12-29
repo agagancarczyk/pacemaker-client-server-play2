@@ -136,9 +136,97 @@ public class PacemakerAPI extends Controller
         activity.distance = updatedActivity.distance;
         activity.location = updatedActivity.location;
         activity.type     = updatedActivity.type;
+        activity.duration = updatedActivity.duration;
+        activity.date     = updatedActivity.date;
+        activity.averageSpeed = updatedActivity.averageSpeed;
+        activity.caloriesBurned = updatedActivity.caloriesBurned; 
 
         activity.save();
         return ok(renderActivity(updatedActivity));
+      }
+      else
+      {
+        return badRequest();
+      }
+    }
+  }   
+  
+  //Locations
+  public static Result locations (Long activityId)
+  {  
+    Activity a = Activity.findById(activityId);
+    return ok(renderLocation(a.route));
+  }
+
+  public static Result createLocation (Long activityId)
+  { 
+    Activity    activity      = Activity.findById(activityId);
+    Location location = renderLocation(request().body().asJson().toString());  
+
+    activity.route.add(location);
+    activity.save();
+
+    return ok(renderLocation(location));
+  }
+
+  public static Result location (Long activityId, Long locationId)
+  {  
+    Activity    activity      = Activity.findById(activityId);
+    Location location = Location.findById(locationId);
+
+    if (location == null)
+    {
+      return notFound();
+    }
+    else
+    {
+      return activity.route.contains(location)? ok(renderLocation(location)): badRequest();
+    }
+  }  
+
+  public static Result deleteLocation (Long activityId, Long locationId)
+  {  
+    Activity    activity      = Activity.findById(activityId);
+    Location location = Location.findById(locationId);
+    if (location == null)
+    {
+      return notFound();
+    }
+    else
+    {
+      if (activity.route.contains(location))
+      {
+        activity.route.remove(location);
+        location.delete();
+        activity.save();
+        return ok();
+      }
+      else
+      {
+        return badRequest();
+      }
+
+    }
+  }  
+
+  public static Result updateLocation (Long activityId, Long locationId)
+  {
+    Activity    activity      = Activity.findById(activityId);
+    Location location = Location.findById(locationId);
+    if (location == null)
+    {
+      return notFound();
+    }
+    else
+    {
+      if (activity.route.contains(location))
+      {
+        Location updatedLocation = renderLocation(request().body().asJson().toString());
+        location.latitude = updatedLocation.latitude;
+        location.longtitude = updatedLocation.longtitude;
+
+        location.save();
+        return ok(renderLocation(updatedLocation));
       }
       else
       {
