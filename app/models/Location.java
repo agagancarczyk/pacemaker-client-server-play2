@@ -25,8 +25,6 @@ public class Location extends Model
   public float latitude;
   public float longtitude;
   
-  @ManyToOne(cascade=CascadeType.ALL)
-  public Activity activity;
 
   public Location()
   {

@@ -1,11 +1,14 @@
 package models;
 
+
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import play.db.ebean.*;
 
@@ -22,7 +25,7 @@ public class Activity extends Model
   public String type;
   public String location;
   public double distance;
-  public DateTime date;
+  public Date date;
   public String duration; 
   public double averageSpeed;
   public int caloriesBurned; 
@@ -34,7 +37,7 @@ public class Activity extends Model
   {
   }
 
-  public Activity(String type, String location, double distance, DateTime date, String duration, double averageSpeed, int caloriesBurned)
+  public Activity(String type, String location, double distance, Date date, String duration, double averageSpeed, int caloriesBurned)
   {
     this.type = type;
     this.location  = location;

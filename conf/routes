@@ -23,8 +23,8 @@ DELETE  /api/users/:userId/activities/:activityId              controllers.Pacem
 PUT     /api/users/:userId/activities/:activityId              controllers.PacemakerAPI.updateActivity(userId: Long, activityId:Long)
 
 # Locations
-GET     /api/activities/:activityId/locations                  controllers.PacemakerAPI.locations(activityId: Long)
-POST    /api/activities/:activityId/locations                  controllers.PacemakerAPI.createLocation(activityId: Long)
+GET     /api/activities/:activityId/locations    controllers.PacemakerAPI.locations(activityId: Long)
+POST    /api/activities/:activityId/locations    controllers.PacemakerAPI.createLocation(activityId: Long)
 
 GET     /api/activities/:activityId/locations/:locationId      controllers.PacemakerAPI.location(activityId: Long, locationId: Long)
 DELETE  /api/activities/:activityId/locations/:locationId      controllers.PacemakerAPI.deleteLocation(activityId:Long, locationId: Long)

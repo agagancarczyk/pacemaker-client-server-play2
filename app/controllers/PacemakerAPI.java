@@ -72,7 +72,9 @@ public class PacemakerAPI extends Controller
   public static Result createActivity (Long userId)
   { 
     User    user      = User.findById(userId);
+    
     Activity activity = renderActivity(request().body().asJson().toString());  
+    
 
     user.activities.add(activity);
     user.save();

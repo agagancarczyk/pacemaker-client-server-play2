@@ -1,7 +1,243 @@
-@(message: String)
+@(users: List[User])
 
 @main("Welcome to Play") {
 
-    @play20.welcome(message, style = "Java")
+  <div id="container" class="">     
+    <header class="header black-bg">
+      <a href="index.html" class="logo"><b>PACEMAKER</b></a>
+      <div class="nav notify-row" id="top_menu">
+        <ul class="nav top-menu">
+          <li id="header_inbox_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <i class="fa fa-bars tooltips-o"></i>
+            </a>
+            <ul class="dropdown-menu extended inbox">
+                <div class="notify-arrow notify-arrow-green"></div>
+                <li>
+                  <p class="green">You have 5 new messages</p>
+                </li>
+                <li>
+                  <a href="index.html#">
+                    <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
+                    <span class="subject">
+                      <span class="from">Zac Snider</span>
+                      <span class="time">Just now</span>
+                    </span>
+                    <span class="message">
+                       Hi mate, how is everything?
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="index.html#">
+                    <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
+                    <span class="subject">
+                      <span class="from">Divya Manian</span>
+                      <span class="time">40 mins.</span>
+                    </span>
+                    <span class="message">
+                      Hi, I need your help with this.
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="index.html#">
+                    <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
+                    <span class="subject">
+                      <span class="from">Dan Rogers</span>
+                      <span class="time">2 hrs.</span>
+                    </span>
+                    <span class="message">
+                      Love your new Dashboard.
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="index.html#">
+                    <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
+                    <span class="subject">
+                      <span class="from">Dj Sherman</span>
+                      <span class="time">4 hrs.</span>
+                    </span>
+                    <span class="message">
+                      Please, answer asap.
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="index.html#">See all messages</a>
+                </li>
+              </ul>
+            </li>
+            <!-- inbox dropdown end -->
+          </ul>
+          <!--  notification end -->
+        </div>
+        <div class="top-menu">
+          <ul class="nav pull-right top-menu">
+            <li><a class="logout" href="login.html">Logout</a></li>
+          </ul>
+        </div>
+      </header>
+           
+      <div class="wrapper">         
+        <div class="col-lg-3 ds">
+          <h5 class="centered">Name and surname</h5>
+		  <h3>INFO</h3>                          
+          <div class="desc">
+            <div class="thumb">
+              <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+            </div>
+            <div class="details">
+              <p><muted>EMAIL: </muted><br>email example</p>
+            </div>
+          </div>
+          <div class="desc">
+            <div class="thumb">
+              <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+            </div>
+            <div class="details">
+              <p><muted>NATIONALITY: </muted><br>nationality example</p>
+            </div>
+          </div>
+          <!-- STATS SECTION -->
+		  <h3>STATS</h3>
+          <div class="desc">
+            <div class="details">
+              <p>TOTAL ACTIVITIES: <br>
+                <muted>0</muted>
+              </p>
+            </div>
+          </div>
+          <div class="desc">
+            <div class="details">
+              <p>TOTAL DISTANCE: <br>
+                <muted>0 mi</muted>
+              </p>
+            </div>
+          </div>
+          <div class="desc">
+            <div class="details">
+              <p>TOTAL CALORIES: <br>
+                <muted>0</muted>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">         
+          <div class="row mtbox">
+            <div class="col-md-2 col-sm-2 col-md-offset-2 box0">
+              <div class="box1">
+			    <span class=" fa fa-dashboard"></span>
+			    <h4>Dashboard</h4>
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-2 box0">
+              <div class="box1">
+			    <span class="fa fa-file-text"></span>
+			    <h4>Reports</h4>
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-2 box0">
+              <div class="box1">
+			    <span class="fa fa-calendar"></span>
+			    <h4>Activities</h4>
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-2 box0">
+              <div class="box1">
+			    <span class="fa fa-users"></span>
+			    <h4>Friends</h4>
+              </div>
+            </div>
+          </div>
+          	
+          <div class="centered">
+	        <h2>My Activity Totals</h2>
+	      </div>	
+                 
+          <div class="row mt">
+            <div class="col-md-4 col-sm-4 mb">
+              <div class="white-panel pn">
+                <div class="white-header">
+		          <h5>TOTAL MI</h5>
+                </div>
+			    <div class="row">
+			      <div class="col-sm-6 col-xs-6 goleft">
+				    <p><i class="fa fa-road"></i></p>
+				  </div>
+				  <div class="col-sm-6 col-xs-6"></div>
+	            </div>
+	            <div class="centered">
+                  <h2>0</h2>
+	            </div>
+              </div>
+            </div><!-- /col-md-4 -->
+            <div class="col-md-4 col-sm-4 mb">
+              <div class="white-panel pn">
+                <div class="white-header">
+		          <h5>TOTAL ACTIVITIES</h5>
+                </div>
+			    <div class="row">
+			      <div class="col-sm-6 col-xs-6 goleft">
+				    <p><i class="fa fa-car"></i></p>
+				  </div>
+				  <div class="col-sm-6 col-xs-6"></div>
+	            </div>
+	            <div class="centered">
+                  <h2>0</h2>
+	            </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4 mb">
+              <div class="white-panel pn">
+                <div class="white-header">
+		          <h5>TOTAL CALORIES</h5>
+                </div>
+			    <div class="row">
+			      <div class="col-sm-6 col-xs-6 goleft">
+				    <p><i class="fa fa-fire"></i> 122</p>
+				  </div>
+				  <div class="col-sm-6 col-xs-6"></div>
+	            </div>
+	            <div class="centered">
+                  <h2>0</h2>
+	            </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="centered">
+	        <h2>Recent Activities</h2>
+	      </div>
+          <div class="row">
+		    <div class="col-md-12 mb">
+              <div class="darkblue-panel pn">
+                <div class="darkblue-header">
+			      <h5>STATICS</h5>
+                </div>
+                <p>Date example</p>
+			    <footer>
+			      <div class="pull-left">
+				    <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+				  </div>
+				  <div class="pull-right">
+				    <h5>Number</h5>
+				  </div>
+				</footer>
+              </div>
+			</div>
+		  </div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="text-center">
+      2015 - Pacemaker
+    </div>
+  </footer>
+</div>
 
 }

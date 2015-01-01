@@ -18,9 +18,9 @@ create table my_activity (
 
 create table my_location (
   id                        bigint not null,
+  activity_id               bigint not null,
   latitude                  float,
   longtitude                float,
-  activity_id               bigint,
   constraint pk_my_location primary key (id))
 ;
 
@@ -42,8 +42,8 @@ create sequence my_user_seq;
 
 alter table my_activity add constraint fk_my_activity_my_user_1 foreign key (user_id) references my_user (id) on delete restrict on update restrict;
 create index ix_my_activity_my_user_1 on my_activity (user_id);
-alter table my_location add constraint fk_my_location_activity_2 foreign key (activity_id) references my_activity (id) on delete restrict on update restrict;
-create index ix_my_location_activity_2 on my_location (activity_id);
+alter table my_location add constraint fk_my_location_my_activity_2 foreign key (activity_id) references my_activity (id) on delete restrict on update restrict;
+create index ix_my_location_my_activity_2 on my_location (activity_id);
 
 
 

@@ -3,11 +3,15 @@ package parsers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
+
+import play.Logger;
 import models.Activity;
 import models.Location;
 import models.User;
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
+import flexjson.*;
 
 public class JsonParser
 {
@@ -34,7 +38,9 @@ public class JsonParser
 	//Activity
 	public static Activity renderActivity(String json)
 	{
+		System.out.println(json);
 	  Activity activity = new JSONDeserializer<Activity>().deserialize(json,   Activity.class);
+	  
 	  return activity;
 	}
 
