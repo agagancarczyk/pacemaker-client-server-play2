@@ -1,0 +1,18 @@
+@()
+
+@main("Sign Up") {
+
+  <form class="form-login" action="/users/createUser" method="POST">
+    <h2 class="form-login-heading">pacemaker<br>sign up</h2>
+    <div class="login-wrap">
+      <input type="text" class="form-control" name="firstname" placeholder="First Name" autofocus=""><br>
+      <input type="text" class="form-control" name="lastname" placeholder="Last Name" autofocus=""><br>
+      <input type="text" class="form-control" name="nationality" placeholder="Nationality" autofocus=""><br>
+      <input type="text" class="form-control" name="email" placeholder="Email" autofocus=""><br>
+      <input type="password" class="form-control" placeholder="Password">		               
+      <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN UP</button>
+	  <hr>
+    </div>
+  </form>	  
+
+}
