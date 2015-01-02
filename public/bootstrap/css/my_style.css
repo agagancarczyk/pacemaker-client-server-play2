@@ -101,7 +101,7 @@ a, a:hover, a:focus {
 .bg-theme04 {
   background-color: #ed5565;
 }
-/*Theme Buttons*/
+/*Buttons*/
 
 .btn-theme {
   color: #fff;
@@ -176,6 +176,17 @@ a, a:hover, a:focus {
   color: #fff;
   background-color: #444c57;
   border-color: #444c57;
+}
+
+.btn-blue {
+  color: #fff;
+  background-color: #008AE6;
+  border-color: #444c57;
+}
+.btn-blue:hover,
+.btn-blue:focus,
+.btn-blue:active,
+.btn-blue.active,
 }
 
 .btn-clear-g {
