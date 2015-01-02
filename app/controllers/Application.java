@@ -9,12 +9,12 @@ import views.html.*;
 
 public class Application extends Controller {
 	
-    private static final Form<User> userForm = Form.form(User.class);
     private static final Form<Activity> activityForm = Form.form(Activity.class);
 
     public static Result index() 
     {
-    	return ok(index.render());
+    	User user = Accounts.getLoggedInUser(); 
+    	return ok(user.toString());
     }
     
     public static Result friends()

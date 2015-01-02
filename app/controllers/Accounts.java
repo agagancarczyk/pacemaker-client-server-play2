@@ -37,7 +37,7 @@ public class Accounts extends Controller {
         if ((user != null) && (user.checkPassword(formUser.password))) {
             System.out.println("Authentication successful");
             session().put("logged_in_userid", user.id.toString());
-            return ok(index.render());
+            return ok(index.render(user));
 		
     	} else {
 			System.out.println("Authentication failed");

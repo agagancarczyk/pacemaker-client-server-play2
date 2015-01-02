@@ -1,4 +1,4 @@
-@()
+@(user : User)
 
 @main("Index") {
 
@@ -13,14 +13,14 @@
     </header>       
     <div class="wrapper">         
       <div class="col-lg-3 ds">
-        <h5 class="centered">name and surname</h5>  
+        <h5 class="centered"><strong>LOGGED IN: </strong> @user.firstname @user.lastname</h5>  
 		<h3>INFO</h3>                          
         <div class="desc">
           <div class="thumb">
             <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
           </div>
           <div class="details">
-            <p><muted>EMAIL: </muted>email<br></p>
+            <p><muted><strong>EMAIL: </strong></muted><br>@user.email</p>
           </div>
         </div>
         <div class="desc">
@@ -28,7 +28,7 @@
             <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
           </div>
           <div class="details">
-            <p><muted>NATIONALITY: </muted><br>nationality example</p>
+            <p><muted><strong>NATIONALITY: <strong></muted><br>@user.nationality</p>
           </div>
         </div>
 		<h3>STATS</h3>
