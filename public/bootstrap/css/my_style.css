@@ -865,6 +865,22 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	color: #E60000;
 }
 
+.df {
+	background: #ffffff;
+	padding-top: 50px;
+}
+
+.df h2 {
+	color: #ffffff;
+	font-size: 16px;
+	padding: 0 10px;
+	line-height: 60px;
+	height: 60px;
+	margin: 0;
+	background: #00B800;
+	text-align: center;
+}
+
 /* LINE ICONS CONFIGURATION */
 
 .mtbox {
@@ -2045,27 +2061,6 @@ label {
 }
 .login-wrap .registration {
 	text-align: center;
-}
-
-.form-find-friends {
-    margin-top: 50px;
-	max-width: 330px;
-	background: #fff;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
-
-.form-find-friends h2.form-find-friends-heading {
-	margin: 0;
-	padding: 25px 20px;
-	text-align: center;
-	background: #00B800;
-	border-radius: 5px 5px 0 0;
-	-webkit-border-radius: 5px 5px 0 0;
-	color: #fff;
-	font-size: 20px;
-	text-transform: uppercase;
-	font-weight: 300;
 }
 
 /*LOCK SCREEN CONF*/

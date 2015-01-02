@@ -11,16 +11,15 @@
       </ul>
     </div>
   </header>       
-  <div class="wrapper">         
-    <div class="col-lg-3">
-      <form class="form-find-friends" action="" method="">
-        <h2 class="form-find-friends-heading">pacemaker<br>find pacemaker users</h2>
-        <div class="login-wrap">
-          <input type="text" class="form-control" name="" placeholder="" autofocus=""><br>	               
+  <div class="wrapper">   
+    <div class="col-lg-3 df">   
+      <h2>FIND FRIENDS</h2><br>                         
+      <form action="" method="">    
+        <input type="text" class="form-control" name="" placeholder="" autofocus=""><br>	               
         <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i> FIND</button>
 	    <hr>
       </form>
-       <ul>
+      <ul>
         @for(i <- 0 until users.size) {
           <li> 
             @users(i).firstname @users(i).lastname </a> 
@@ -28,7 +27,6 @@
         }
       </ul>
     </div>
-  </div>
   <div class="col-lg-9">         
     <div class="row mtbox">
       <div class="col-md-2 col-sm-2 col-md-offset-2 box0">
