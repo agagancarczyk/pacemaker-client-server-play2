@@ -9,6 +9,12 @@ GET     /index                                                 controllers.Appli
 GET     /signup                                                controllers.Application.signup()
 POST    /users/createUser                                      controllers.Application.createUser()
 
+GET     /friends                                               controllers.Application.friends()
+
+GET     /activities                                            controllers.Application.activities()
+
+GET     /reports                                               controllers.Application.reports()
+
 # Users
 GET     /api/users                                 			   controllers.PacemakerAPI.users()
 DELETE  /api/users                                 			   controllers.PacemakerAPI.deleteAllUsers()

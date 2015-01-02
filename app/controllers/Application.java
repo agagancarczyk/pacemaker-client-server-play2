@@ -11,10 +11,8 @@ public class Application extends Controller {
 	
     private static final Form<User> userForm = Form.form(User.class);
 
-
     public static Result index() {
-    	 List<User> users = User.findAll();
-    	 return ok(index.render(users));
+    	 return ok(index.render());
     }
     
     public static Result login()
@@ -33,5 +31,21 @@ public class Application extends Controller {
         User user = boundForm.get();
         user.save();
         return redirect ("/");
+    }
+    
+    public static Result friends()
+    {
+    	List<User> users = User.findAll();
+   	    return ok(friends.render(users));
+    }
+    
+    public static Result activities()
+    {
+   	    return ok(activities.render());
+    }
+    
+    public static Result reports()
+    {
+   	    return ok(reports.render());
     }
 }

@@ -20,13 +20,24 @@ body {
     font-size:13px;
 }
 
+.btn-green {
+    background-color: #00CC00;
+    border-color: #006600;
+    color: #444c57;
+}
+
 ul li {
     list-style: none;
+}
+
+a {
+    color: #989898;
 }
 
 a, a:hover, a:focus {
     text-decoration: none;
     outline: none;
+    color: #989898;
 }
 ::selection {
 

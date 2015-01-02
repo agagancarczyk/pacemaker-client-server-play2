@@ -1,0 +1,88 @@
+@(users: List[User])
+
+@main("Friends") {
+
+<div id="container" class="">     
+  <header class="header black-bg">
+    <a href="" class="logo"><b>PACEMAKER</b></a>
+    <div class="top-menu">
+      <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="">Logout</a></li>
+      </ul>
+    </div>
+  </header>       
+  <div class="wrapper">         
+    <div class="col-lg-3 ds">
+      <ul>
+        @for(i <- 0 until users.size) {
+          <li> 
+            @users(i).firstname @users(i).lastname </a> 
+          </li>
+        }
+      </ul>
+      <form class="form-login" action="" method="">
+        <h2 class="form-login-heading">pacemaker<br>find pacemaker users</h2>
+        <div class="login-wrap">
+          <input type="text" class="form-control" name="" placeholder="" autofocus=""><br>	               
+        <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-search"></i>FIND</button>
+	    <hr>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-9">         
+    <div class="row mtbox">
+      <div class="col-md-2 col-sm-2 col-md-offset-2 box0">
+        <div class="box1">
+	      <a href="/index"><span class=" fa fa-dashboard"></span><h4>Dashboard</h4></a>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 box0">
+        <div class="box1">
+	      <a href="/reports"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 box0">
+        <div class="box1">
+	      <a href="/activities"><span class="fa fa-calendar"></span><h4>Activities</h4></a>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 box0">
+        <div class="box1">
+	      <a href="/friends"><span class="fa fa-users"></span><h4>Friends</h4></a>
+        </div>
+      </div>
+    </div>  
+    <form action="" method="">
+	  <div class="centered">
+        <h2 class="form-login-heading">Find Friends and Family</h2>
+        <div class="col-lg-4">
+          <input type="text" class="form-control" name="email" placeholder="Email" autofocus="">
+        </div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control" name="firstname" placeholder="Full Name" autofocus="">
+        </div>
+        <div class="col-lg-4">	                              
+          <button class="btn btn-green btn-block" type="submit">Invite Friend</button>
+        </div>
+      </div>
+    </form>	
+    <div class="row">
+      <div class="col-md-12 mb"><br>
+        <div class="darkblue-panel pn"><br>
+          <div class="darkblue-header">
+ 	        <h5>Friend name</h5>
+          </div>
+          <p>Date example</p>
+        </div>
+	  </div>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="text-center">
+    2015 - Pacemaker
+  </div>
+</footer>
+</div>
+
+}
