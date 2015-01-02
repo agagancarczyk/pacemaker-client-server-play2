@@ -12,21 +12,21 @@
     </div>
   </header>       
   <div class="wrapper">         
-    <div class="col-lg-3 ds">
-      <ul>
+    <div class="col-lg-3">
+      <form class="form-find-friends" action="" method="">
+        <h2 class="form-find-friends-heading">pacemaker<br>find pacemaker users</h2>
+        <div class="login-wrap">
+          <input type="text" class="form-control" name="" placeholder="" autofocus=""><br>	               
+        <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i> FIND</button>
+	    <hr>
+      </form>
+       <ul>
         @for(i <- 0 until users.size) {
           <li> 
             @users(i).firstname @users(i).lastname </a> 
           </li>
         }
       </ul>
-      <form class="form-login" action="" method="">
-        <h2 class="form-login-heading">pacemaker<br>find pacemaker users</h2>
-        <div class="login-wrap">
-          <input type="text" class="form-control" name="" placeholder="" autofocus=""><br>	               
-        <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-search"></i>FIND</button>
-	    <hr>
-      </form>
     </div>
   </div>
   <div class="col-lg-9">         
@@ -68,8 +68,8 @@
     </form>	
     <div class="row">
       <div class="col-md-12 mb"><br>
-        <div class="darkblue-panel pn"><br>
-          <div class="darkblue-header">
+        <div class="darkgrey-panel pn"><br>
+          <div class="darkgrey-header">
  	        <h5>Friend name</h5>
           </div>
           <p>Date example</p>

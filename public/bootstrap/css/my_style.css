@@ -21,9 +21,9 @@ body {
 }
 
 .btn-green {
-    background-color: #00CC00;
-    border-color: #006600;
-    color: #444c57;
+    background-color: #00B800;
+    border-color: white;
+    color: white;
 }
 
 ul li {
@@ -39,6 +39,7 @@ a, a:hover, a:focus {
     outline: none;
     color: #989898;
 }
+
 ::selection {
 
     background: #E60000;
@@ -160,6 +161,21 @@ a, a:hover, a:focus {
   color: #fff;
   background-color: #da4453;
   border-color: #da4453;
+}
+
+.btn-find {
+  color: #fff;
+  background-color: #00B800;
+  border-color: #444c57;
+}
+.btn-find:hover,
+.btn-find:focus,
+.btn-find:active,
+.btn-find.active,
+.open .dropdown-toggle.btn-find {
+  color: #fff;
+  background-color: #444c57;
+  border-color: #444c57;
 }
 
 .btn-clear-g {
@@ -494,7 +510,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     text-decoration: none;
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    color: #b6b6b6 !important;
+    color: white !important;
 }
 
 .notify-row .badge {
@@ -792,6 +808,17 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	height: 60px;
 	margin: 0;
 	background: #E60000;
+	text-align: center;
+}
+
+.ds h2 {
+	color: #ffffff;
+	font-size: 16px;
+	padding: 0 10px;
+	line-height: 60px;
+	height: 60px;
+	margin: 0;
+	background: #008AE6;
 	text-align: center;
 }
 
@@ -1112,6 +1139,64 @@ PANELS CONFIGURATIONS
 	color: #E60000;
 	padding-right: 4px;
 	font-size: 14px;
+}
+
+/* Activities White Panel */
+
+.activities-white-panel {
+	text-align: center;
+	background: #ffffff;
+	color: #ccd1d9;
+}
+
+.activities-white-panel p {
+	margin-top: 5px;
+	font-weight: 700;
+	margin-left: 15px;
+}
+.activities-white-panel .white-header {
+	background: #f4f4f4;
+	padding: 3px;
+	margin-bottom: 15px;
+	color: #c6c6c6;
+}
+.activities-white-panel .small {
+	font-size: 10px;
+	color: #ccd1d9;
+}
+
+.activities-white-panel i {
+	color: #2E8AE6;
+	padding-right: 4px;
+	font-size: 14px;
+}
+
+/* Dark Grey*/
+
+.darkgrey-panel {
+	text-align: center;
+	background: #989898;
+}
+.darkgrey-panel .darkgrey-header {
+	background: transparent;
+	padding: 3px;
+	margin-bottom: 15px;
+}
+.darkgrey-panel h1 {
+	color: #f2f2f2;
+}
+.darkgrey-panel h5 {
+	font-weight: 200;
+	margin-top: 10px;
+	color: white;
+}
+.darkgrey-panel footer {
+	color: white;
+}
+.darkgrey-panel footer h5 {
+	margin-left:10px; 
+	margin-right: 10px;
+	font-weight: 700;
 }
 
 /*STOCK CARD Panel*/
@@ -1961,12 +2046,27 @@ label {
 .login-wrap .registration {
 	text-align: center;
 }
-.login-social-link {
-	display: block;
-	margin-top: 20px;
-	margin-bottom: 15px;
+
+.form-find-friends {
+    margin-top: 50px;
+	max-width: 330px;
+	background: #fff;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
+.form-find-friends h2.form-find-friends-heading {
+	margin: 0;
+	padding: 25px 20px;
+	text-align: center;
+	background: #00B800;
+	border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	color: #fff;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: 300;
+}
 
 /*LOCK SCREEN CONF*/
 #showtime {
@@ -2004,38 +2104,6 @@ label {
 	border: 1px solid rgba(0, 0, 0, .2);
 	border-radius: 5px;
 }
-
-
-.btn-facebook {
-  color: #fff;
-  background-color: #5193ea;
-  border-color: #2775e2;
-}
-.btn-facebook:hover,
-.btn-facebook:focus,
-.btn-facebook:active,
-.btn-facebook.active,
-.open .dropdown-toggle.btn-facebook {
-  color: #fff;
-  background-color: #2775e2;
-  border-color: #2775e2;
-}
-
-.btn-twitter {
-  color: #fff;
-  background-color: #44ccfe;
-  border-color: #2bb4e8;
-}
-.btn-twitter:hover,
-.btn-twitter:focus,
-.btn-twitter:active,
-.btn-twitter.active,
-.open .dropdown-toggle.btn-twitter {
-  color: #fff;
-  background-color: #2bb4e8;
-  border-color: #2bb4e8;
-}
-
 
 /*badge*/
 .badge.bg-primary {
@@ -2227,7 +2295,7 @@ label {
 
 /*footer*/
 .site-footer {
-    background: #E60000;
+    background: #444c57;
     color: #fff;
     padding: 10px 0;
 }
