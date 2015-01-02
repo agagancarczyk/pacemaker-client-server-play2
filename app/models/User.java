@@ -88,6 +88,12 @@ public class User extends Model
   {
     return find.where().eq("id", id).findUnique();
   }
+  
+  public boolean checkPassword(String password) {
+	  
+		return this.password.equals(password);
+	}
+
 
   public static List<User> findAll()
   {

@@ -10,27 +10,11 @@ import views.html.*;
 public class Application extends Controller {
 	
     private static final Form<User> userForm = Form.form(User.class);
+    private static final Form<Activity> activityForm = Form.form(Activity.class);
 
-    public static Result index() {
-    	 return ok(index.render());
-    }
-    
-    public static Result login()
+    public static Result index() 
     {
-      return ok(login.render());
-    }
-    
-    public static Result signup()
-    {
-      return ok(signup.render());
-    }
-    
-    public static Result createUser()
-    {
-    	Form<User> boundForm = userForm.bindFromRequest();
-        User user = boundForm.get();
-        user.save();
-        return redirect ("/");
+    	return ok(index.render());
     }
     
     public static Result friends()
@@ -44,8 +28,27 @@ public class Application extends Controller {
    	    return ok(activities.render());
     }
     
+    public static Result uploadActivity(Long userId, Long activityId)
+    {
+    	User user = User.findById(userId);
+    	    	
+    	Form<Activity> boundForm = activityForm.bindFromRequest();
+        Activity activity = boundForm.get();
+        
+        user.activities.add(activity); 
+        
+        user.save();
+        return redirect ("user/activities");
+    }
+    
     public static Result reports()
     {
    	    return ok(reports.render());
+    }
+    
+    public static Result showUser(Long id)
+    {
+      User user =  User.findById(id);
+      return ok(showuser.render(user));
     }
 }

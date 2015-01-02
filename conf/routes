@@ -3,15 +3,19 @@
 # ~~~~
 
 # Home page
-GET     /                                                      controllers.Application.login()
+GET     /                                                      controllers.Accounts.login()
 GET     /index                                                 controllers.Application.index()
 
-GET     /signup                                                controllers.Application.signup()
-POST    /users/createUser                                      controllers.Application.createUser()
+POST    /authenticate          							       controllers.Accounts.authenticate()
+GET     /logout												   controllers.Accounts.logout()
+GET     /signup                                                controllers.Accounts.signup()
+POST    /users/createUser                                      controllers.Accounts.createUser()
 
 GET     /friends                                               controllers.Application.friends()
+GET     /users/showuser/:id                                    controllers.Application.showUser(id : Long)
 
 GET     /activities                                            controllers.Application.activities()
+POST    /users/:userId/activities/:activityId/uploadActivity   controllers.Application.uploadActivity(userId : Long, activityId : Long)
 
 GET     /reports                                               controllers.Application.reports()
 

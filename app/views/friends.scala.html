@@ -21,9 +21,10 @@
       </form>
       <ul>
         @for(i <- 0 until users.size) {
-          <li> 
-            @users(i).firstname @users(i).lastname </a> 
-          </li>
+          <tr>
+            <td> <a href="/users/showuser/@users(i).id"> @users(i).firstname </a> </td>  
+            <td> @users(i).lastname  </td> 
+          </tr>
         }
       </ul>
     </div>

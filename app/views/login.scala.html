@@ -2,20 +2,22 @@
 
 @main("Login") {
 
-  <form class="form-login" action="">
+  <form class="form-login" action="/authenticate" method="POST">
     <h2 class="form-login-heading">pacemaker<br>sign in now</h2>
     <div class="login-wrap">
-      <input type="text" class="form-control" placeholder="Email" autofocus=""><br>
-      <input type="password" class="form-control" placeholder="Password">		               
-      <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+      <input type="text" class="form-control" name="email" placeholder="Email"><br>
+      <input type="password" class="form-control" name="password" placeholder="Password">		               
+      <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
 	  <hr>
-	  <div class="registration">
-        Don't have an account yet?<br>
-		<a class="" href="/signup">
-		  Create an account
-		</a>
-      </div>
     </div>
-  </form>	  
-
+  </form>	
+  
+  <div class="login-wrap">
+    <div class="registration">
+      Don't have an account yet?<br>
+      <a class="" href="/signup">
+        Create an account
+	  </a>
+    </div>  
+  </div>
 }
