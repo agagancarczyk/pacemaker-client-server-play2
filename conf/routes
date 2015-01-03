@@ -11,7 +11,7 @@ GET     /logout												   controllers.Accounts.logout()
 GET     /signup                                                controllers.Accounts.signup()
 POST    /users/createUser                                      controllers.Accounts.createUser()
 
-GET     /friends                                               controllers.Members.friends()
+GET     /friends                                               controllers.Friends.friends()
 GET     /users/showuser/:id                                    controllers.Application.showUser(id : Long)
 
 GET     /activities                                            controllers.Activities.activities()

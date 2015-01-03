@@ -7,7 +7,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.friends;
 
-public class Members extends Controller {
+public class Friends extends Controller {
 	
 	public static Result friends()
     {
