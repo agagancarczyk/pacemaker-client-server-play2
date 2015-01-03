@@ -9,7 +9,7 @@ public class Application extends Controller {
     public static Result index() 
     {
     	User user = Accounts.getLoggedInUser(); 
-    	return ok(user.toString());
+    	return ok(index.render(user));
     }
    
     public static Result showUser(Long id)
