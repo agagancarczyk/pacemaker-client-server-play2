@@ -11,13 +11,13 @@ GET     /logout												   controllers.Accounts.logout()
 GET     /signup                                                controllers.Accounts.signup()
 POST    /users/createUser                                      controllers.Accounts.createUser()
 
-GET     /friends                                               controllers.Application.friends()
+GET     /friends                                               controllers.Members.friends()
 GET     /users/showuser/:id                                    controllers.Application.showUser(id : Long)
 
-GET     /activities                                            controllers.Application.activities()
-POST    /users/:userId/activities/:activityId/uploadActivity   controllers.Application.uploadActivity(userId : Long, activityId : Long)
+GET     /activities                                            controllers.Activities.activities()
+POST    /users/:userId/activities/:activityId/uploadActivity   controllers.Activities.uploadActivity(userId : Long, activityId : Long)
 
-GET     /reports                                               controllers.Application.reports()
+GET     /reports                                               controllers.Reports.reports()
 
 # Users
 GET     /api/users                                 			   controllers.PacemakerAPI.users()
