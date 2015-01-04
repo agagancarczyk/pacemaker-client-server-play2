@@ -21,8 +21,9 @@ public class Activities extends Controller {
     
 	public static Result activities(Long userId)
     {
-	  User user = Accounts.getLoggedInUser(); 
-	  return ok(activities.render(user));
+	  User user = Accounts.getLoggedInUser();
+	  
+	  return ok(activities.render(user, getLastActivity(user)));
 	}
 	    
 	public static Result uploadActivity(Long userId)
@@ -36,18 +37,21 @@ public class Activities extends Controller {
 	  user.activities.add(formActivity); 
 	        
 	  user.save();
-	  return ok(activities.render(user));
+	  return ok(activities.render(user, getLastActivity(user)));
 	}
 	
 	public static Result showActivity(Long userId, Long activityId)
     {
-	  User user = Accounts.getLoggedInUser(); 
-	  return ok(activities.render(user));
+	  User user = Accounts.getLoggedInUser();
+	  Activity act = Activity.findById(activityId);
+	  return ok(activities.render(user, act));
 	}
 	
-//	public static Result showRecentActivities()
-//	{
-//		User user = Accounts.getLoggedInUser(); 
-//		    
-//	}
+	private static Activity getLastActivity(User user){
+		Activity act = null;
+		  if (user.activities.size()>0){
+			  act = user.activities.get(user.activities.size()-1);
+		  }
+		return act;
+	}
 }
