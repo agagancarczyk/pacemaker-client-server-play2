@@ -9,10 +9,11 @@ import views.html.friends;
 
 public class Friends extends Controller {
 	
-	public static Result friends()
+	public static Result friends(Long userId)
     {
+		User user = Accounts.getLoggedInUser(); 
     	List<User> users = User.findAll();
-   	    return ok(friends.render(users));
+   	    return ok(friends.render(user, users));
     }
 
 }

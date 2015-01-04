@@ -4,21 +4,20 @@
 
 # Home page
 GET     /                                                      controllers.Accounts.login()
-GET     /index                                                 controllers.Application.index()
+GET     /users/:userId/index                                   controllers.Application.index(userId : Long)
 
 POST    /authenticate          							       controllers.Accounts.authenticate()
 GET     /logout												   controllers.Accounts.logout()
 GET     /signup                                                controllers.Accounts.signup()
 POST    /users/createUser                                      controllers.Accounts.createUser()
 
-GET     /friends                                               controllers.Friends.friends()
-GET     /users/showuser/:id                                    controllers.Application.showUser(id : Long)
+GET     /users/:userId/friends                                 controllers.Friends.friends(userId : Long)
 
 GET     /postactivity                                          controllers.Activities.newActivity()
 GET     /users/:userId/activities                              controllers.Activities.activities(userId : Long)
 POST    /users/:userId/activities	                           controllers.Activities.uploadActivity(userId : Long)
 
-GET     /reports                                               controllers.Reports.reports()
+GET     /users/:userId/reports                                 controllers.Reports.reports(userId : Long)
 
 # Users
 GET     /api/users                                 			   controllers.PacemakerAPI.users()

@@ -29,6 +29,7 @@ public class Accounts extends Controller {
      
     public static Result authenticate () {
     	Form<User> boundForm = userForm.bindFromRequest();
+    	System.out.println(boundForm.toString());
         User formUser = boundForm.get();
         User user = User.findByEmail(formUser.email);
         System.out.println(formUser);

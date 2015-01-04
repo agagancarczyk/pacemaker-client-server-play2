@@ -1,3 +1,5 @@
+@(user : User)
+
 @main("Reports") {
 
   <div id="container" class="">     
@@ -19,22 +21,22 @@
         <div class="row mtbox">
           <div class="col-md-2 col-sm-2 col-md-offset-2 box0">
             <div class="box1">
-			  <a href="/index"><span class=" fa fa-dashboard"></span><h4>Dashboard</h4></a>
+			  <a href="/users/@user.id/index"><span class=" fa fa-dashboard"></span><h4>Dashboard</h4></a>
             </div>
           </div>
           <div class="col-md-2 col-sm-2 box0">
             <div class="box1">
-			  <a href="/reports"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
+			  <a href="/users/@user.id/reports"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
             </div>
           </div>
           <div class="col-md-2 col-sm-2 box0">
             <div class="box1">
-			  <a href="/activities"><span class="fa fa-calendar"></span><h4>Activities</h4></a>
+			  <a href="/users/@user.id/activities"><span class="fa fa-calendar"></span><h4>Activities</h4></a>
             </div>
           </div>
           <div class="col-md-2 col-sm-2 box0">
             <div class="box1">
-			  <a href="/friends"><span class="fa fa-users"></span><h4>Friends</h4></a>
+			  <a href="/users/@user.id/friends"><span class="fa fa-users"></span><h4>Friends</h4></a>
             </div>
           </div>
         </div>  	
