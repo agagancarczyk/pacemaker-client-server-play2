@@ -7,7 +7,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.activities;
 import views.html.postactivity;
-import views.html.showactivity;
 
 public class Activities extends Controller {
 	
@@ -47,11 +46,13 @@ public class Activities extends Controller {
 	  return ok(activities.render(user, act));
 	}
 	
-	private static Activity getLastActivity(User user){
+	private static Activity getLastActivity(User user)
+	{
 		Activity act = null;
 		  if (user.activities.size()>0){
 			  act = user.activities.get(user.activities.size()-1);
 		  }
 		return act;
 	}
+    
 }

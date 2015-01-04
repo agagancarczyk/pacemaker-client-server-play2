@@ -1,4 +1,6 @@
 @(user : User)
+@import java.lang.Float; var totalD=0.0
+@import java.lang.Integer; var totalC=0
 
 @main("Index") {
 
@@ -42,14 +44,20 @@
         <div class="desc">
           <div class="details">
             <p>TOTAL DISTANCE: <br>
-              <muted>0 mi</muted>
+              @for(act <- user.activities) {
+                @(totalD = totalD + act.distance)
+              }
+              <muted>@totalD mi</muted>
             </p>
           </div>
         </div>
         <div class="desc">
           <div class="details">
             <p>TOTAL CALORIES: <br>
-              <muted>0</muted>
+               @for(act <- user.activities) {
+                @(totalC = totalC + act.caloriesBurned)
+              }
+              <muted>@totalC mi</muted>
             </p>
           </div>
         </div>
@@ -94,7 +102,7 @@
 				<div class="col-sm-6 col-xs-6"></div>
 	          </div>
 	          <div class="centered">
-                <h2>0</h2>
+                <h2>@totalD</h2>
 	          </div>
             </div>
           </div>
@@ -126,7 +134,7 @@
 		      <div class="col-sm-6 col-xs-6"></div>
 	        </div>
 	        <div class="centered">
-              <h2>0</h2>
+              <h2>@totalC</h2>
 	        </div>
           </div>
         </div>
