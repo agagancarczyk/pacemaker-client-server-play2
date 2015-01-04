@@ -7,6 +7,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.activities;
 import views.html.postactivity;
+import views.html.showactivity;
 
 public class Activities extends Controller {
 	
@@ -35,6 +36,12 @@ public class Activities extends Controller {
 	  user.activities.add(formActivity); 
 	        
 	  user.save();
+	  return ok(activities.render(user));
+	}
+	
+	public static Result showActivity(Long userId, Long activityId)
+    {
+	  User user = Accounts.getLoggedInUser(); 
 	  return ok(activities.render(user));
 	}
 	

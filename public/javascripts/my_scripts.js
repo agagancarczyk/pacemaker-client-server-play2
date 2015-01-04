@@ -10,3 +10,10 @@ $(":input").keyup(showValues);
 $("select").change(showValues);
 $("radio").change(showValues);
 showValues();
+
+
+jQuery(document).ready(function($) {
+      $(".clickableRow").click(function() {
+            window.document.location = $(this).attr("href");
+      });
+});

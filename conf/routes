@@ -16,6 +16,7 @@ GET     /users/:userId/friends                                 controllers.Frien
 GET     /postactivity                                          controllers.Activities.newActivity()
 GET     /users/:userId/activities                              controllers.Activities.activities(userId : Long)
 POST    /users/:userId/activities	                           controllers.Activities.uploadActivity(userId : Long)
+GET     /users/:userId/activities/:activityId                  controllers.Activities.showActivity(userId : Long, activityId : Long)
 
 GET     /users/:userId/reports                                 controllers.Reports.reports(userId : Long)
 

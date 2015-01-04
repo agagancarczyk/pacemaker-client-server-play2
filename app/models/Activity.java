@@ -22,7 +22,7 @@ public class Activity extends Model
   @Id
   @GeneratedValue
   public Long   id;
-  public String type;
+  public String category;
   public String location;
   public double distance;
   public Date date;
@@ -37,9 +37,9 @@ public class Activity extends Model
   {
   }
 
-  public Activity(String type, String location, double distance, Date date, String duration, double averageSpeed, int caloriesBurned)
+  public Activity(String category, String location, double distance, Date date, String duration, double averageSpeed, int caloriesBurned)
   {
-    this.type = type;
+    this.category = category;
     this.location  = location;
     this.distance     = distance;
     this.date  = date;
@@ -50,7 +50,7 @@ public class Activity extends Model
 
   public void update (Activity activity)
   {
-    this.type = activity.type;
+    this.category = activity.category;
     this.location  = activity.location;
     this.distance     = activity.distance;
     this.date  = activity.date;
@@ -63,7 +63,7 @@ public class Activity extends Model
   {
     return Objects.toStringHelper(this)
         .add("Id", id)
-        .add("Type", type)
+        .add("Category", category)
         .add("Location", location)
         .add("Distance", distance)
         .add("Date", date)
@@ -79,7 +79,7 @@ public class Activity extends Model
     if (obj instanceof Activity)
     {
       final Activity other = (Activity) obj;
-      return Objects.equal(type, other.type) 
+      return Objects.equal(category, other.category) 
           && Objects.equal(location, other.location)
           && Objects.equal(distance, other.distance)
           && Objects.equal(date, other.date)

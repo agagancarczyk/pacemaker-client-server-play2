@@ -6,7 +6,7 @@
 create table my_activity (
   id                        bigint not null,
   user_id                   bigint not null,
-  type                      varchar(255),
+  category                  varchar(255),
   location                  varchar(255),
   distance                  double,
   date                      timestamp,

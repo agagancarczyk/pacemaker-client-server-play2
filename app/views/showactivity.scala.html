@@ -1,0 +1,76 @@
+@(user : User)
+
+@main("Show Activity") {
+
+  <div class="centered">
+	      <h2>Activity Details</h2>
+	    </div>	         
+        <div class="row mt">
+          <div class="col-md-3 col-sm-3 mb">
+            <div class="activities-white-panel pn">
+              <div class="white-header">
+		        <h5>KM</h5>
+              </div>
+			  <div class="row">
+			    <div class="col-sm-3 col-xs-3 goleft">
+		          <p><i class="fa fa-road"></i></p>
+		        </div>
+		        <div class="col-sm-6 col-xs-6"><h2>0</h2></div>
+	          </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3 mb">
+            <div class="activities-white-panel pn">
+              <div class="white-header">
+		        <h5>DURATION</h5>
+              </div>
+	        <div class="row">
+	          <div class="col-sm-3 col-xs-3 goleft">
+		        <p><i class="fa fa-clock-o"></i></p>
+		      </div>
+		      <div class="col-sm-6 col-xs-6"><h2>0</h2></div>
+	        </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 mb">
+          <div class="activities-white-panel pn">
+            <div class="white-header">
+		      <h5>AVERAGE SPEED</h5>
+            </div>
+	        <div class="row">
+	          <div class="col-sm-3 col-xs-3 goleft">
+		        <p><i class="fa fa-paper-plane-o"></i></p>
+		      </div>
+		      <div class="col-sm-6 col-xs-6"><h2>0</h2></div>
+	        </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 mb">
+          <div class="activities-white-panel pn">
+            <div class="white-header">
+		      <h5>CALORIES BURNED</h5>
+            </div>
+	        <div class="row">
+		      <div class="col-sm-3 col-xs-3 goleft">
+		        <p><i class="fa fa-fire"></i></p>
+		      </div>
+		      <div class="col-sm-6 col-xs-6"><h2>0</h2></div>
+	        </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb">
+          <div class="centered">
+            <h2>Average Speed</h2>
+	      </div>
+          <div id="chart-1" style="height: 300px;"></div>
+            <script>
+              new Chartkick.LineChart("chart-1", {"2013-02-10 00:00:00 -0800":11,"2013-02-11 00:00:00 -0800":6,"2013-02-12 00:00:00 -0800":3,"2013-02-13 00:00:00 -0800":2,"2013-02-14 00:00:00 -0800":5,"2013-02-15 00:00:00 -0800":3,"2013-02-16 00:00:00 -0800":8,"2013-02-17 00:00:00 -0800":6,"2013-02-18 00:00:00 -0800":6,"2013-02-19 00:00:00 -0800":12,"2013-02-20 00:00:00 -0800":5,"2013-02-21 00:00:00 -0800":5,"2013-02-22 00:00:00 -0800":3,"2013-02-23 00:00:00 -0800":1,"2013-02-24 00:00:00 -0800":10,"2013-02-25 00:00:00 -0800":1,"2013-02-26 00:00:00 -0800":3,"2013-02-27 00:00:00 -0800":2,"2013-02-28 00:00:00 -0800":3,"2013-03-01 00:00:00 -0800":2,"2013-03-02 00:00:00 -0800":8});
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+}
