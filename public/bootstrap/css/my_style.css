@@ -1193,6 +1193,8 @@ PANELS CONFIGURATIONS
 	text-align: center;
 	background: #ffffff;
 	color: #ccd1d9;
+	width: 150px;
+	height: 150px;
 }
 
 .activities-white-panel p {
