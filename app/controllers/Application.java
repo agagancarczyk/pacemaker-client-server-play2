@@ -17,4 +17,7 @@ public class Application extends Controller {
       User user =  User.findById(id);
       return ok(showuser.render(user));
     }
+    
+    
+    
 }

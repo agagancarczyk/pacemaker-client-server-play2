@@ -14,8 +14,9 @@ POST    /users/createUser                                      controllers.Accou
 GET     /friends                                               controllers.Friends.friends()
 GET     /users/showuser/:id                                    controllers.Application.showUser(id : Long)
 
-GET     /activities                                            controllers.Activities.activities()
-POST    /users/:userId/activities/:activityId/uploadActivity   controllers.Activities.uploadActivity(userId : Long, activityId : Long)
+GET     /postactivity                                          controllers.Activities.newActivity()
+GET     /users/:userId/activities                              controllers.Activities.activities(userId : Long)
+POST    /users/:userId/activities	                           controllers.Activities.uploadActivity(userId : Long)
 
 GET     /reports                                               controllers.Reports.reports()
 

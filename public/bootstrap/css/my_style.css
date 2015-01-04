@@ -19,6 +19,18 @@ body {
     margin: 0px !important;
     font-size:13px;
 }
+ 
+ul.nav.nav-tabs
+{
+    border: none;
+    margin-top: 50px;
+    margin-bottom: 20px;    
+}
+
+.form-horizontal .form-group 
+{
+  margin-left: 0px;
+}
 
 .btn-green {
     background-color: #00B800;
@@ -38,6 +50,12 @@ a, a:hover, a:focus {
     text-decoration: none;
     outline: none;
     color: #989898;
+}
+
+select#type
+{
+  width: 290px;
+  margin-bottom: 20px;
 }
 
 ::selection {
@@ -176,17 +194,6 @@ a, a:hover, a:focus {
   color: #fff;
   background-color: #444c57;
   border-color: #444c57;
-}
-
-.btn-blue {
-  color: #fff;
-  background-color: #008AE6;
-  border-color: #444c57;
-}
-.btn-blue:hover,
-.btn-blue:focus,
-.btn-blue:active,
-.btn-blue.active,
 }
 
 .btn-clear-g {
@@ -889,6 +896,18 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	height: 60px;
 	margin: 0;
 	background: #00B800;
+	text-align: center;
+}
+
+.col-lg-4.centered h2
+{
+	color: white;
+	font-size: 16px;
+	padding: 0 10px;
+	line-height: 60px;
+	height: 60px;
+	margin: 0;
+	background: #008AE6;
 	text-align: center;
 }
 

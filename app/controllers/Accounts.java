@@ -22,7 +22,6 @@ public class Accounts extends Controller {
        return ok(login.render());
     }
      
-     
     public static Result signup()
     {
        return ok(signup.render());

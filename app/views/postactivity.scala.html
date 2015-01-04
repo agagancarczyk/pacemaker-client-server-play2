@@ -1,0 +1,105 @@
+@(user : User)
+
+@main("Post Activity") {
+
+<div id="container" class="">     
+  <header class="header black-bg">
+    <a href="" class="logo"><b>PACEMAKER</b></a>
+    <div class="top-menu">
+      <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </header>       
+  <div class="wrapper">  
+    <div class="col-lg-2"></div>
+      <div class="col-lg-7">              
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#equipment-tab" data-toggle="tab"><h3>Step 1: Activity/Equipment Type</h3></a></li>
+          <li><a href="#additional-tab" data-toggle="tab"><h3>Step 2: Additional Details</h3></a></li>
+        </ul>
+        <form class="form-horizontal" action="/users/@user.id/activities" method="POST">
+          <div class="tab-content">
+            <div class="tab-pane active" id="equipment-tab">
+              <h4>Activity:</h4>
+              <div class="form-group">
+                <div class="btn-group" data-toggle="buttons">
+                  <label class="btn btn-primary">
+                    <input type="radio" class="form-control" name="type" value="Running"><img src="@routes.Assets.at("images/running.png")" width="50" height="60"/><br>Running
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" class="form-control" name="type" value="Walking"><img src="@routes.Assets.at("images/walking.png")" width="50" height="60"/><br>Walking
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" class="form-control" name="type" value="Swimming"><img src="@routes.Assets.at("images/swimming.png")" width="50" height="60"/><br>Swimming
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" class="form-control" name="type" value="Cycling"><img src="@routes.Assets.at("images/cycling.png")" width="50" height="60"/><br>Cycling
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="additional-tab">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Location</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" name="location" placeholder="Location">	
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Distance</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" name="distance" placeholder="Distance (km)">	               
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Date of Activity</label>
+                <div class="col-sm-5">
+                  <input type="date" class="form-control" name="date" placeholder="Date">		               
+                </div>
+              </div> 
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Duration</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" name="duration" placeholder="Duration">		               
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Average Speed</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" name="averageSpeed" placeholder="Average Speed">		               
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Calories Burned</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" name="caloriesBurned" placeholder="Calories Burned">		               	               
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin: 15px">
+            <div class="form-group">
+              <div class="col-sm-5 col-sm-offset-3">
+                <button class="btn btn-default" type="submit"><i class="fa fa-upload"></i> Upload</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>    
+      <div class="col-lg-3 ds">
+        <h2>Activity Details</h2>
+        <div class="desc">
+          <div class="details">
+            <h5><muted><strong>New Activity Details: </strong><span id="results"></span></muted><br><h5>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <footer class="site-footer">
+      <div class="text-center">
+        2015 - Pacemaker
+      </div>
+    </footer>
+  </div>
+}
