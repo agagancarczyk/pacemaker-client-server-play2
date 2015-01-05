@@ -72,11 +72,15 @@
           </div>
           <div class="row">
             <div class="col-md-12 mb">
-              <h3>Calories Burned</h3>
+              <h3>Calories Burned (cal)</h3>
               <div id="chart-100" style="height: 300px;"></div>
-                <script>
-                  new Chartkick.BarChart("chart-100", [["0",32],["1",46],["2",28],["3",21],["4",20],["5",13],["6",27]]);
-                </script>
+                <script language="javascript" type="text/javascript">
+              	var chart_data = $.ajax({type: "GET", 
+              	  url:"/users/@user.id/reports/caloriesBurned", 
+              	  async: false}).responseText;
+				  var data = JSON.parse(chart_data);
+                  new Chartkick.BarChart("chart-100", data);
+              </script>
 	          </div>
             </div> 
 	      </div>

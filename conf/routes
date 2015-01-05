@@ -21,6 +21,7 @@ GET     /users/:userId/activities/:activityId                  controllers.Activ
 GET     /users/:userId/reports                                 controllers.Reports.reports(userId : Long)
 GET		/users/:userId/reports/distance						   controllers.Reports.distance(userId : Long)
 GET		/users/:userId/reports/duration						   controllers.Reports.duration(userId : Long)
+GET     /users/:userId/reports/caloriesBurned                  controllers.Reports.caloriesBurned(userId : Long)
 
 # Users
 GET     /api/users                                 			   controllers.PacemakerAPI.users()

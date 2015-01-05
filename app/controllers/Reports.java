@@ -46,4 +46,16 @@ public class Reports extends Controller {
 
 		return ok(renderGraphData(str));
 	}
+	
+	public static Result caloriesBurned(Long userId) {
+	    User user = Accounts.getLoggedInUser();
+	    List<Activity> activities = user.activities; 
+	    Object[][] str = new Object[activities.size()][];
+	    for (int i = 0; i < activities.size(); i++) {
+	    	Activity act = activities.get(i);
+	    	str[i] = new Object[] { act.id, act.caloriesBurned};
+	    	
+	    }
+	    return ok(renderGraphData(str));
+	}
 }
