@@ -18,6 +18,8 @@ public class JsonParser
 	private static JSONSerializer  userSerializer = new JSONSerializer().exclude("class");
 	private static JSONSerializer  activitySerializer = new JSONSerializer().exclude("class");
     private static JSONSerializer  locationSerializer = new JSONSerializer().exclude("class");
+    private static JSONSerializer  graphDataSerializer = new JSONSerializer().exclude("class");
+
 	
 	//User
 	public static User renderUser(String json)
@@ -70,4 +72,8 @@ public class JsonParser
     {
 	  return new JSONDeserializer<ArrayList<Location>>().use("values", Location.class).deserialize(json);
 	}  
+    
+    public static String renderGraphData(Object obj){
+    	return graphDataSerializer.serialize(obj);
+    }
 }

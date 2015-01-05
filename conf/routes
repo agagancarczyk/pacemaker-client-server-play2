@@ -19,6 +19,8 @@ POST    /users/:userId/activities	                           controllers.Activit
 GET     /users/:userId/activities/:activityId                  controllers.Activities.showActivity(userId : Long, activityId : Long)
 
 GET     /users/:userId/reports                                 controllers.Reports.reports(userId : Long)
+GET		/users/:userId/reports/distance						   controllers.Reports.distance(userId : Long)
+GET		/users/:userId/reports/duration						   controllers.Reports.duration(userId : Long)
 
 # Users
 GET     /api/users                                 			   controllers.PacemakerAPI.users()

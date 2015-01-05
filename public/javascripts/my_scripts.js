@@ -17,3 +17,15 @@ jQuery(document).ready(function($) {
             window.document.location = $(this).attr("href");
       });
 });
+
+
+function getDistance(data){
+console.log("sd");
+	console.log(data);
+
+return [1,2]
+}
+
+
+
+

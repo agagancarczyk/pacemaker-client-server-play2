@@ -14,7 +14,9 @@
     <div class="wrapper">         
       <div class="col-lg-3 ds">
         <h5 class="centered"><i class="fa fa-heart"></i> All Cardio</h5>  
-		<a href=""><h3>RUNNING</h3></a><br>                          
+		<a href=""><h3>RUNNING</h3></a><br>   
+		<a href=""><h3>WALKING</h3></a><br>
+		<a href=""><h3>SWIMMING</h3></a><br>             
 		<a href=""><h3>CYCLING</h3></a><br>
       </div>
       <div class="col-lg-9">         
@@ -46,19 +48,25 @@
 	  </div>
       <div class="row">
         <div class="col-md-12 mb">
-          <h3>Distance</h3>
+          <h3>Distance (units)</h3>
           <div id="chart-1" style="height: 300px;"></div>
-            <script>
-              new Chartkick.LineChart("chart-1", {"2013-02-10 00:00:00 -0800":11,"2013-02-11 00:00:00 -0800":6,"2013-02-12 00:00:00 -0800":3,"2013-02-13 00:00:00 -0800":2,"2013-02-14 00:00:00 -0800":5,"2013-02-15 00:00:00 -0800":3,"2013-02-16 00:00:00 -0800":8,"2013-02-17 00:00:00 -0800":6,"2013-02-18 00:00:00 -0800":6,"2013-02-19 00:00:00 -0800":12,"2013-02-20 00:00:00 -0800":5,"2013-02-21 00:00:00 -0800":5,"2013-02-22 00:00:00 -0800":3,"2013-02-23 00:00:00 -0800":1,"2013-02-24 00:00:00 -0800":10,"2013-02-25 00:00:00 -0800":1,"2013-02-26 00:00:00 -0800":3,"2013-02-27 00:00:00 -0800":2,"2013-02-28 00:00:00 -0800":3,"2013-03-01 00:00:00 -0800":2,"2013-03-02 00:00:00 -0800":8});
+            <script language="javascript" type="text/javascript">
+            	var chart_data = $.ajax({type: "GET", url:"/users/@user.id/reports/distance", async: false}).responseText;
+				var data = JSON.parse(chart_data);
+                new Chartkick.LineChart("chart-1",data)
             </script>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 mb">
-            <h3>Duration</h3>
+            <h3>Duration (minutes)</h3>
             <div id="chart-3" style="height: 300px;"></div>
-              <script>
-                new Chartkick.ColumnChart("chart-3", [["0",32],["1",46],["2",28],["3",21],["4",20],["5",13],["6",27]]);
+            <script language="javascript" type="text/javascript">
+              	var chart_data = $.ajax({type: "GET", 
+              	  url:"/users/@user.id/reports/duration", 
+              	  async: false}).responseText;
+				var data = JSON.parse(chart_data);
+                new Chartkick.ColumnChart("chart-3", data);
               </script>
 	        </div>
           </div>
