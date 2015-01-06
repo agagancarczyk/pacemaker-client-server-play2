@@ -18,10 +18,10 @@ GET     /users/:userId/activities                              controllers.Activ
 POST    /users/:userId/activities	                           controllers.Activities.uploadActivity(userId : Long)
 GET     /users/:userId/activities/:activityId                  controllers.Activities.showActivity(userId : Long, activityId : Long)
 
-GET     /users/:userId/reports                                 controllers.Reports.reports(userId : Long)
-GET		/users/:userId/reports/distance						   controllers.Reports.distance(userId : Long)
-GET		/users/:userId/reports/duration						   controllers.Reports.duration(userId : Long)
-GET     /users/:userId/reports/caloriesBurned                  controllers.Reports.caloriesBurned(userId : Long)
+GET     /users/:userId/reports/:category                       controllers.Reports.reports(userId : Long, category : String)
+GET		/users/:userId/reports/distance/:category			   controllers.Reports.distance(userId : Long, category : String)
+GET		/users/:userId/reports/duration/:category			   controllers.Reports.duration(userId : Long, category : String)
+GET     /users/:userId/reports/caloriesBurned/:category        controllers.Reports.caloriesBurned(userId : Long, category : String)
 
 # Users
 GET     /api/users                                 			   controllers.PacemakerAPI.users()

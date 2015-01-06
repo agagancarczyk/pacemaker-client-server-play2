@@ -1,4 +1,4 @@
-@(user : User)
+@(user : User, activity : List[Activity], category : String)
 
 @main("Reports") {
 
@@ -13,11 +13,14 @@
     </header>       
     <div class="wrapper">         
       <div class="col-lg-3 ds">
-        <h5 class="centered"><i class="fa fa-heart"></i> All Cardio</h5>  
-		<a href=""><h3>RUNNING</h3></a><br>   
-		<a href=""><h3>WALKING</h3></a><br>
-		<a href=""><h3>SWIMMING</h3></a><br>             
-		<a href=""><h3>CYCLING</h3></a><br>
+        <h5 class="centered"><i class="fa fa-heart"></i> All Cardio</h5>
+          @if(activity.isEmpty) {
+            <h1>No Activities Found</h1>
+          } else {
+          @for(cat <- user.activities(0).categories) {
+            <a href="/users/@user.id/reports/@cat"><h3>@cat</h3><br></a>
+              }
+          }
       </div>
       <div class="col-lg-9">         
         <div class="row mtbox">
@@ -28,7 +31,7 @@
           </div>
           <div class="col-md-2 col-sm-2 box0">
             <div class="box1">
-			  <a href="/users/@user.id/reports"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
+			  <a href="/users/@user.id/reports/all"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
             </div>
           </div>
           <div class="col-md-2 col-sm-2 box0">
@@ -51,9 +54,9 @@
           <h3>Distance (units)</h3>
           <div id="chart-1" style="height: 300px;"></div>
             <script language="javascript" type="text/javascript">
-            	var chart_data = $.ajax({type: "GET", url:"/users/@user.id/reports/distance", async: false}).responseText;
-				var data = JSON.parse(chart_data);
-                new Chartkick.LineChart("chart-1",data)
+            	var chart_data = $.ajax({type: "GET", url:"/users/@user.id/reports/distance/@category", async: false}).responseText;
+				var distanceData = JSON.parse(chart_data);
+                new Chartkick.LineChart("chart-1",distanceData)
             </script>
           </div>
         </div>
@@ -63,7 +66,7 @@
             <div id="chart-3" style="height: 300px;"></div>
             <script language="javascript" type="text/javascript">
               	var chart_data = $.ajax({type: "GET", 
-              	  url:"/users/@user.id/reports/duration", 
+              	  url:"/users/@user.id/reports/duration/@category", 
               	  async: false}).responseText;
 				var data = JSON.parse(chart_data);
                 new Chartkick.ColumnChart("chart-3", data);
@@ -76,7 +79,7 @@
               <div id="chart-100" style="height: 300px;"></div>
                 <script language="javascript" type="text/javascript">
               	var chart_data = $.ajax({type: "GET", 
-              	  url:"/users/@user.id/reports/caloriesBurned", 
+              	  url:"/users/@user.id/reports/caloriesBurned/@category", 
               	  async: false}).responseText;
 				  var data = JSON.parse(chart_data);
                   new Chartkick.BarChart("chart-100", data);

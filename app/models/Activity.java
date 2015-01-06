@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class Activity extends Model
   public String duration; 
   public double averageSpeed;
   public int caloriesBurned; 
+  public List<String> categories = Arrays.asList("Swimming","Running","Cycling", "All");
   
   @OneToMany(cascade=CascadeType.ALL)
   public List<Location> route = new ArrayList<>();
