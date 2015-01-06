@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import play.db.ebean.*;
+import models.Friendship;
 
 import com.google.common.base.Objects;
 
@@ -25,6 +26,10 @@ public class User extends Model
   
   @OneToMany(cascade=CascadeType.ALL)
   public List<Activity> activities = new ArrayList<Activity>();
+  
+  @OneToMany(cascade=CascadeType.ALL)
+  public List<Friendship> friendships = new ArrayList<Friendship>();
+
 
   public User()
   {

@@ -5,12 +5,11 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 
+import models.Friendship;
 import play.Logger;
 import models.Activity;
 import models.Location;
 import models.User;
-import flexjson.JSONDeserializer;
-import flexjson.JSONSerializer;
 import flexjson.*;
 
 public class JsonParser
@@ -19,7 +18,7 @@ public class JsonParser
 	private static JSONSerializer  activitySerializer = new JSONSerializer().exclude("class");
     private static JSONSerializer  locationSerializer = new JSONSerializer().exclude("class");
     private static JSONSerializer  graphDataSerializer = new JSONSerializer().exclude("class");
-
+    private static JSONSerializer  friendshipSerializer = new JSONSerializer().exclude("class");
 	
 	//User
 	public static User renderUser(String json)
@@ -76,4 +75,21 @@ public class JsonParser
     public static String renderGraphData(Object obj){
     	return graphDataSerializer.serialize(obj);
     }
+    
+  //Friendship
+    public static Friendship renderFriendship(String json)
+    {
+	  Friendship friendship = new JSONDeserializer<Friendship>().deserialize(json,   Friendship.class);
+      return friendship;
+    }
+
+	public static String renderFriendship(Object obj)
+    {
+      return friendshipSerializer.serialize(obj);
+	}
+		    
+	public static  List<Friendship> renderFriendships (String json)
+	{
+	  return new JSONDeserializer<ArrayList<Friendship>>().use("values", Friendship.class).deserialize(json);
+	}  
 }

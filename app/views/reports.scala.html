@@ -15,7 +15,7 @@
       <div class="col-lg-3 ds">
         <h5 class="centered"><i class="fa fa-heart"></i> All Cardio</h5>
           @if(activity.isEmpty) {
-            <h1>No Activities Found</h1>
+            <h3>No Activities Found</h3><br>
           } else {
           @for(cat <- user.activities(0).categories) {
             <a href="/users/@user.id/reports/@cat"><h3>@cat</h3><br></a>

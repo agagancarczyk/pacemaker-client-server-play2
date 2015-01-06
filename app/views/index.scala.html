@@ -18,46 +18,48 @@
         <h5 class="centered"><strong>LOGGED IN: </strong> @user.firstname @user.lastname</h5>  
 		<h3>INFO</h3>                          
         <div class="desc">
-          <div class="thumb">
-            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-          </div>
           <div class="details">
-            <p><muted><strong>EMAIL: </strong></muted><br>@user.email</p>
+            <p><muted><strong><i class="fa fa-clock-o"></i>EMAIL: </strong></muted>@user.email</p>
           </div>
         </div>
         <div class="desc">
-          <div class="thumb">
-            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-          </div>
           <div class="details">
-            <p><muted><strong>NATIONALITY: <strong></muted><br>@user.nationality</p>
+            <p><muted><strong><i class="fa fa-clock-o"></i>NATIONALITY: <strong></muted>@user.nationality</p>
           </div>
         </div>
+        <h3>RECENT ACTIVITIES</h3>
+        <div class="desc">
+          <div class="details">
+            @for(user <- user.activities) {
+	          <p><i class="fa fa-thumbs-up"></i><muted> @user.distance km @user.category</muted></p>
+	        } 
+          </div>
+        </div>      
 		<h3>STATS</h3>
         <div class="desc">
           <div class="details">
-            <p>TOTAL ACTIVITIES: <br>
-              <muted>@user.activities.size</muted>
+            <p><muted>TOTAL ACTIVITIES: 
+              @user.activities.size</muted>
             </p>
           </div>
         </div>
         <div class="desc">
           <div class="details">
-            <p>TOTAL DISTANCE: <br>
+            <p><muted>TOTAL DISTANCE: 
               @for(act <- user.activities) {
                 @(totalD = totalD + act.distance)
               }
-              <muted>@totalD mi</muted>
+              @totalD mi</muted>
             </p>
           </div>
         </div>
         <div class="desc">
           <div class="details">
-            <p>TOTAL CALORIES: <br>
+            <p><muted>TOTAL CALORIES: 
                @for(act <- user.activities) {
                 @(totalC = totalC + act.caloriesBurned)
               }
-              <muted>@totalC mi</muted>
+              @totalC mi</muted>
             </p>
           </div>
         </div>
@@ -71,7 +73,7 @@
           </div>
           <div class="col-md-2 col-sm-2 box0">
             <div class="box1">
-			  <a href="/users/@user.id/reports"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
+			  <a href="/users/@user.id/reports/all"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
             </div>
           </div>
           <div class="col-md-2 col-sm-2 box0">
@@ -79,7 +81,6 @@
 			  <a href="/users/@user.id/activities"><span class="fa fa-calendar"></span><h4>Activities</h4></a>
             </div>
           </div>
-          
           <div class="col-md-2 col-sm-2 box0">
             <div class="box1">
 			  <a href="/users/@user.id/friends"><span class="fa fa-users"></span><h4>Friends</h4></a>
@@ -138,15 +139,12 @@
 	        </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4 centered">
-        <a href="/postactivity"><h2>Post New Activity</h2></a>  
+        <div class="col-lg-4 col-lg-offset-4 centered">
+          <a href="/postactivity"><h2>Post New Activity</h2></a>
+	    </div>
 	  </div>
-	  <div class="col-lg-4"></div>
-	</div>
+    </div>
   </div>
-</div>
 </div>
 <footer class="site-footer">
   <div class="text-center">

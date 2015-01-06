@@ -11,7 +11,7 @@ GET     /logout												   controllers.Accounts.logout()
 GET     /signup                                                controllers.Accounts.signup()
 POST    /users/createUser                                      controllers.Accounts.createUser()
 
-GET     /users/:userId/friends                                 controllers.Friends.friends(userId : Long)
+GET     /users/:userId/friends                                 controllers.Friendship.friends(userId : Long)
 
 GET     /postactivity                                          controllers.Activities.newActivity()
 GET     /users/:userId/activities                              controllers.Activities.activities(userId : Long)

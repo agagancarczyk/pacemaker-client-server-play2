@@ -7,13 +7,12 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.friends;
 
-public class Friends extends Controller {
+public class Friendship extends Controller {
 	
 	public static Result friends(Long userId)
     {
 		User user = Accounts.getLoggedInUser(); 
-    	List<User> users = User.findAll();
-   	    return ok(friends.render(user, users));
+		List<User> users = User.findAll();
+   	    return ok(friends.render(user,users));
     }
-
 }
