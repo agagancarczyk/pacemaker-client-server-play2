@@ -19,21 +19,17 @@
         <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i> FIND</button>
 	    <hr>
       </form>
-      <ul>
-        @for(i <- 0 until users.size) {
-          <tr>
-            <td> <a href="/users/showuser/@users(i).id"> @users(i).firstname </a> </td>  
-            <td> @users(i).lastname  </td>   
-                <form action="/users/@user.id/friends/addFriend/@users(i).id" method="POST"> 
-                  <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i>  add friend</button>
-                </form>
-                <form action="/users/@user.id/friends/removeFriend/@users(i).id" method="POST"> 
-                  <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i>  remove friend</button>
-                </form>  
-             </a>
-          </tr>
+      @for(i <- 0 until users.size) {    
+        <a href="/users/showuser/@users(i).id"> @users(i).firstname </a>   
+          @users(i).lastname  </td>   
+            <form action="/users/@user.id/friends/addFriend/@users(i).id" method="POST"> 
+              <button class="btn btn-info btn-block" type="submit"><i class="fa fa-search"></i> ADD FRIEND</button>
+            </form>
+            <form action="/users/@user.id/friends/removeFriend/@users(i).id" method="POST"> 
+              <button class="btn btn-danger btn-block" type="submit"><i class="fa fa-search"></i> REMOVE FRIEND</button>
+            </form>  
+          </a>
         }
-      </ul>
     </div>
   <div class="col-lg-9">         
     <div class="row mtbox">
@@ -60,16 +56,7 @@
     </div>  
     <form action="" method="">
 	  <div class="centered">
-        <h2 class="form-login-heading">Find Friends and Family</h2>
-        <div class="col-lg-4">
-          <input type="text" class="form-control" name="email" placeholder="Email" autofocus="">
-        </div>
-        <div class="col-lg-4">
-          <input type="text" class="form-control" name="firstname" placeholder="Full Name" autofocus="">
-        </div>
-        <div class="col-lg-4">	                              
-          <button class="btn btn-green btn-block" type="submit">Invite Friend</button>
-        </div>
+        <h2 class="form-login-heading">My Friends and Family</h2>
       </div>
     </form>	
     <div class="row">

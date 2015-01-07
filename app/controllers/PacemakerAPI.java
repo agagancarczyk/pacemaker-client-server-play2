@@ -173,38 +173,55 @@ public class PacemakerAPI extends Controller {
 
 	// Locations
 	public static Result locations(String token, Long activityId) {	 
-		Activity a = Activity.findById(activityId);
-		return ok(renderLocation(a.route));
+		User secureUsr = new User();
+		if (token.equals(secureUsr.token)){
+		  Activity a = Activity.findById(activityId);
+		  return ok(renderLocation(a.route));
+		}else{
+			return forbidden();
+		}
 	}
 
 	public static Result createLocation(String token, Long activityId) {
-		Activity activity = Activity.findById(activityId);
-		Location location = renderLocation(request().body().asJson().toString());
+		User secureUsr = new User();
+		if (token.equals(secureUsr.token)) {
+		  Activity activity = Activity.findById(activityId);
+		  Location location = renderLocation(request().body().asJson().toString());
 
-		activity.route.add(location);
-		activity.save();
+		  activity.route.add(location);
+		  activity.save();
 
-		return ok(renderLocation(location));
+		  return ok(renderLocation(location));
+		}else{
+			return forbidden();
+		}
 	}
 
 	public static Result location(String token, Long activityId, Long locationId) {
-		Activity activity = Activity.findById(activityId);
-		Location location = Location.findById(locationId);
+		User secureUsr = new User();
+		if (token.equals(secureUsr.token)){
+		  Activity activity = Activity.findById(activityId);
+		  Location location = Location.findById(locationId);
 
-		if (location == null) {
+		  if (location == null) {
 			return notFound();
-		} else {
+		  } else {
 			return activity.route.contains(location) ? ok(renderLocation(location))
 					: badRequest();
+		  }
+		}else{
+			return forbidden();
 		}
 	}
 
 	public static Result deleteLocation(String token, Long activityId, Long locationId) {
-		Activity activity = Activity.findById(activityId);
-		Location location = Location.findById(locationId);
-		if (location == null) {
+		User secureUsr = new User();
+		if (token.equals(secureUsr.token)){
+		  Activity activity = Activity.findById(activityId);
+		  Location location = Location.findById(locationId);
+		  if (location == null) {
 			return notFound();
-		} else {
+		  } else {
 			if (activity.route.contains(location)) {
 				activity.route.remove(location);
 				location.delete();
@@ -212,12 +229,16 @@ public class PacemakerAPI extends Controller {
 				return ok();
 			} else {
 				return badRequest();
-			}
-
+	      }
+		}
+		}else{
+			return forbidden();
 		}
 	}
 
 	public static Result updateLocation(String token, Long activityId, Long locationId) {
+		User secureUsr = new User();
+		if (token.equals(secureUsr.token)){
 		Activity activity = Activity.findById(activityId);
 		Location location = Location.findById(locationId);
 		if (location == null) {
@@ -235,6 +256,9 @@ public class PacemakerAPI extends Controller {
 				return badRequest();
 			}
 		}
+	  }else{
+		  return forbidden();
+	  }
 	}
 
 	public static Result generateToken(String token, String email) {
