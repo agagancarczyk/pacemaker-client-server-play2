@@ -71,6 +71,9 @@ import com.google.common.base.Objects;
 	  {
 	    return find.where().eq("id", id).findUnique();
 	  }
+	  
+	  
+	  
 
 	  public static List<Friendship> findAll()
 	  {

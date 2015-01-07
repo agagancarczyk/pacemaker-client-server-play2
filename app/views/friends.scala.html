@@ -14,8 +14,8 @@
   <div class="wrapper">   
     <div class="col-lg-3 df">   
       <h2>FIND FRIENDS</h2><br>                         
-      <form action="" method="">    
-        <input type="text" class="form-control" name="" placeholder="" autofocus=""><br>	               
+      <form action="/users/@user.id/friends" method="GET">    
+        <input type="text" class="form-control" name="searchQuery" placeholder="" autofocus=""><br>	               
         <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i> FIND</button>
 	    <hr>
       </form>
@@ -23,7 +23,14 @@
         @for(i <- 0 until users.size) {
           <tr>
             <td> <a href="/users/showuser/@users(i).id"> @users(i).firstname </a> </td>  
-            <td> @users(i).lastname  </td> 
+            <td> @users(i).lastname  </td>   
+                <form action="/users/@user.id/friends/addFriend/@users(i).id" method="POST"> 
+                  <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i>  add friend</button>
+                </form>
+                <form action="/users/@user.id/friends/removeFriend/@users(i).id" method="POST"> 
+                  <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i>  remove friend</button>
+                </form>  
+             </a>
           </tr>
         }
       </ul>
@@ -72,6 +79,12 @@
  	        <h5>Friend name</h5>
           </div>
           <p>Date example</p>
+          @for(friendship <- user.friendships) {
+          <tr>
+            <td>@friendship.targetUser.firstname </td>  
+            <td>@friendship.targetUser.lastname  </td> 
+          </tr>
+        }
         </div>
 	  </div>
     </div>

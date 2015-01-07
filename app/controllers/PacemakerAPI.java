@@ -5,235 +5,241 @@ import play.mvc.*;
 
 import java.util.*;
 
+import ch.qos.logback.core.subst.Token;
 import models.*;
 
-public class PacemakerAPI extends Controller
-{  
+public class PacemakerAPI extends Controller {
 
-  //Users
-  public static Result  users()
-  {
-    List<User> users = User.findAll();
-    return ok(renderUser(users));
-  }
+	// Users
+	public static Result users(String token, Long userId) {
+		User user = User.findById(userId);
+		if (user.token != null && token.equals(user.token)) {
+			List<User> users = User.findAll();
+			return ok(renderUser(users));
+		} else
+			return forbidden();
+	}
 
-  public static Result user(Long id)
-  {
-    User user = User.findById(id);  
-    return user==null? notFound() : ok(renderUser(user)); 
-  }
+	public static Result user(String token, Long userId, Long id) {
+		User secureUsr = User.findById(userId);
+		if (token.equals(secureUsr.token)) {
+			User user = User.findById(id);
+			return user == null ? notFound() : ok(renderUser(user));
+		} else
+			return forbidden();
+	}
 
-  public static Result createUser()
-  {
-    User user = renderUser(request().body().asJson().toString());
-    user.save();
-    return ok(renderUser(user));
-  }
+	public static Result createUser() {
+		User user = renderUser(request().body().asJson().toString());
+		user.generateAPItoken();
+		user.save();
+		return ok(renderUser(user));
+	}
 
-  public static Result deleteUser(Long id)
-  {
-    Result result = notFound();
-    User user = User.findById(id);
-    if (user != null)
-    {
-      user.delete();
-      result = ok();
-    }
-    return result;
-  }
+	public static Result deleteUser(String token, Long id) {
+        User secureUsr = User.findById(id);
+        if (token.equals(secureUsr.token)) {
+    		Result result = notFound();
+        	User user = User.findById(id);
+		if (user != null) {
+			user.delete();
+			result = ok();
+		}
+		return result;
+        } else {
+        	return forbidden();
+        }
+	}
 
-  public static Result deleteAllUsers()
-  {
-    User.deleteAll();
-    return ok();
-  }
+	public static Result deleteAllUsers(String token, Long userId) {
+		User user = User.findById(userId);
+		if (token.equals(user.token)) {
+			User.deleteAll();
+			return ok();
+		} else
+			return forbidden();
+	}
 
-  public static Result updateUser(Long id)
-  {
-    Result result = notFound();
-    User user = User.findById(id);
-    if (user != null)
-    {
-      User updatedUser = renderUser(request().body().asJson().toString());
-      user.update(updatedUser);
-      user.save();
-      result = ok(renderUser(user));
-    }
-    return result;
-  }
-  
-  //Activities
-  public static Result activities (Long userId)
-  {  
-    User p = User.findById(userId);
-    return ok(renderActivity(p.activities));
-  }
+	public static Result updateUser(String token, Long id) {
+		User secureUsr = User.findById(id);
+		if (token.equals(secureUsr.token)) {
+		Result result = notFound();
+		User user = User.findById(id);
+		if (user != null) {
+			User updatedUser = renderUser(request().body().asJson().toString());
+			user.update(updatedUser);
+			user.save();
+			result = ok(renderUser(user));
+		}
+		return result;
+		} else {
+			return forbidden();
+		}
+	}
 
-  public static Result createActivity (Long userId)
-  { 
-    User    user      = User.findById(userId);
-    
-    Activity activity = renderActivity(request().body().asJson().toString());  
-    
+	// Activities
+	public static Result activities(String token, Long userId) {
+		User secureUsr = User.findById(userId);
+		if (token.equals(secureUsr.token)) {
+		User p = User.findById(userId);
+		return ok(renderActivity(p.activities));
+		} else {
+			return forbidden();
+		}
+	}
 
-    user.activities.add(activity);
-    user.save();
+	public static Result createActivity(String token, Long userId) {
+		User secureUsr = User.findById(userId);
+		if (token.equals(secureUsr.token)){
+		User user = User.findById(userId);
+		Activity activity = renderActivity(request().body().asJson().toString());
+		user.activities.add(activity);
+		user.save();
+		return ok(renderActivity(activity));
+		}else{
+			return forbidden();
+		}
+	}
 
-    return ok(renderActivity(activity));
-  }
+	public static Result activity(String token, Long userId, Long activityId) {
+		User secureUsr = User.findById(userId);
+		if (token.equals(secureUsr.token)){
+		  User user = User.findById(userId);
+		  Activity activity = Activity.findById(activityId);
 
-  public static Result activity (Long userId, Long activityId)
-  {  
-    User    user      = User.findById(userId);
-    Activity activity = Activity.findById(activityId);
+		  if (activity == null) {
+			return notFound();
+		  } else {
+			return user.activities.contains(activity) ? ok(renderActivity(activity))
+					: badRequest();
+		  }
+		}else{
+			return forbidden();
+		}
+	}
 
-    if (activity == null)
-    {
-      return notFound();
-    }
-    else
-    {
-      return user.activities.contains(activity)? ok(renderActivity(activity)): badRequest();
-    }
-  }  
+	public static Result deleteActivity(String token, Long userId, Long activityId) {
+		User secureUsr = User.findById(userId);
+		if (token.equals(secureUsr.token)) {
+		User user = User.findById(userId);
+		Activity activity = Activity.findById(activityId);
+		if (activity == null) {
+			return notFound();
+		} else {
+			if (user.activities.contains(activity)) {
+				user.activities.remove(activity);
+				activity.delete();
+				user.save();
+				return ok();
+			} else {
+				return badRequest();
+			}
 
-  public static Result deleteActivity (Long userId, Long activityId)
-  {  
-    User    user      = User.findById(userId);
-    Activity activity = Activity.findById(activityId);
-    if (activity == null)
-    {
-      return notFound();
-    }
-    else
-    {
-      if (user.activities.contains(activity))
-      {
-        user.activities.remove(activity);
-        activity.delete();
-        user.save();
-        return ok();
-      }
-      else
-      {
-        return badRequest();
-      }
+		}
+		}else{
+			return forbidden();
+		}
+	}
 
-    }
-  }  
+	public static Result updateActivity(String token, Long userId, Long activityId) {
+		User secureUsr = User.findById(userId);
+		if (token.equals(secureUsr.token)) {
+		User user = User.findById(userId);
+		Activity activity = Activity.findById(activityId);
+		if (activity == null) {
+			return notFound();
+		} else {
+			if (user.activities.contains(activity)) {
+				Activity updatedActivity = renderActivity(request().body()
+						.asJson().toString());
+				activity.distance = updatedActivity.distance;
+				activity.location = updatedActivity.location;
+				activity.category = updatedActivity.category;
+				activity.duration = updatedActivity.duration;
+				activity.date = updatedActivity.date;
+				activity.averageSpeed = updatedActivity.averageSpeed;
+				activity.caloriesBurned = updatedActivity.caloriesBurned;
 
-  public static Result updateActivity (Long userId, Long activityId)
-  {
-    User    user      = User.findById(userId);
-    Activity activity = Activity.findById(activityId);
-    if (activity == null)
-    {
-      return notFound();
-    }
-    else
-    {
-      if (user.activities.contains(activity))
-      {
-        Activity updatedActivity = renderActivity(request().body().asJson().toString());
-        activity.distance = updatedActivity.distance;
-        activity.location = updatedActivity.location;
-        activity.category     = updatedActivity.category;
-        activity.duration = updatedActivity.duration;
-        activity.date     = updatedActivity.date;
-        activity.averageSpeed = updatedActivity.averageSpeed;
-        activity.caloriesBurned = updatedActivity.caloriesBurned; 
+				activity.save();
+				return ok(renderActivity(updatedActivity));
+			} else {
+				return badRequest();
+			}
+		}
+		}else{
+			return forbidden();
+		}
+	}
 
-        activity.save();
-        return ok(renderActivity(updatedActivity));
-      }
-      else
-      {
-        return badRequest();
-      }
-    }
-  }   
-  
-  //Locations
-  public static Result locations (Long activityId)
-  {  
-    Activity a = Activity.findById(activityId);
-    return ok(renderLocation(a.route));
-  }
+	// Locations
+	public static Result locations(String token, Long activityId) {	 
+		Activity a = Activity.findById(activityId);
+		return ok(renderLocation(a.route));
+	}
 
-  public static Result createLocation (Long activityId)
-  { 
-    Activity    activity      = Activity.findById(activityId);
-    Location location = renderLocation(request().body().asJson().toString());  
+	public static Result createLocation(String token, Long activityId) {
+		Activity activity = Activity.findById(activityId);
+		Location location = renderLocation(request().body().asJson().toString());
 
-    activity.route.add(location);
-    activity.save();
+		activity.route.add(location);
+		activity.save();
 
-    return ok(renderLocation(location));
-  }
+		return ok(renderLocation(location));
+	}
 
-  public static Result location (Long activityId, Long locationId)
-  {  
-    Activity    activity      = Activity.findById(activityId);
-    Location location = Location.findById(locationId);
+	public static Result location(String token, Long activityId, Long locationId) {
+		Activity activity = Activity.findById(activityId);
+		Location location = Location.findById(locationId);
 
-    if (location == null)
-    {
-      return notFound();
-    }
-    else
-    {
-      return activity.route.contains(location)? ok(renderLocation(location)): badRequest();
-    }
-  }  
+		if (location == null) {
+			return notFound();
+		} else {
+			return activity.route.contains(location) ? ok(renderLocation(location))
+					: badRequest();
+		}
+	}
 
-  public static Result deleteLocation (Long activityId, Long locationId)
-  {  
-    Activity    activity      = Activity.findById(activityId);
-    Location location = Location.findById(locationId);
-    if (location == null)
-    {
-      return notFound();
-    }
-    else
-    {
-      if (activity.route.contains(location))
-      {
-        activity.route.remove(location);
-        location.delete();
-        activity.save();
-        return ok();
-      }
-      else
-      {
-        return badRequest();
-      }
+	public static Result deleteLocation(String token, Long activityId, Long locationId) {
+		Activity activity = Activity.findById(activityId);
+		Location location = Location.findById(locationId);
+		if (location == null) {
+			return notFound();
+		} else {
+			if (activity.route.contains(location)) {
+				activity.route.remove(location);
+				location.delete();
+				activity.save();
+				return ok();
+			} else {
+				return badRequest();
+			}
 
-    }
-  }  
+		}
+	}
 
-  public static Result updateLocation (Long activityId, Long locationId)
-  {
-    Activity    activity      = Activity.findById(activityId);
-    Location location = Location.findById(locationId);
-    if (location == null)
-    {
-      return notFound();
-    }
-    else
-    {
-      if (activity.route.contains(location))
-      {
-        Location updatedLocation = renderLocation(request().body().asJson().toString());
-        location.latitude = updatedLocation.latitude;
-        location.longtitude = updatedLocation.longtitude;
+	public static Result updateLocation(String token, Long activityId, Long locationId) {
+		Activity activity = Activity.findById(activityId);
+		Location location = Location.findById(locationId);
+		if (location == null) {
+			return notFound();
+		} else {
+			if (activity.route.contains(location)) {
+				Location updatedLocation = renderLocation(request().body()
+						.asJson().toString());
+				location.latitude = updatedLocation.latitude;
+				location.longtitude = updatedLocation.longtitude;
 
-        location.save();
-        return ok(renderLocation(updatedLocation));
-      }
-      else
-      {
-        return badRequest();
-      }
-    }
-  }   
+				location.save();
+				return ok(renderLocation(updatedLocation));
+			} else {
+				return badRequest();
+			}
+		}
+	}
+
+	public static Result generateToken(String token, String email) {
+		User user = User.findByEmail(email);
+		user.generateAPItoken();
+		return ok(user.token);
+	}
 }

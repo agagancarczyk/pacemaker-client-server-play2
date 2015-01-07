@@ -1,5 +1,13 @@
 # Users
 users:
+    - !!models.User
+        email:      admin@tssg.org
+        firstname:  admin
+        lastname:   admin        
+        password:   admin
+        nationality : admin
+        token:   gq21ghejfjgfiodr9teetbenrh
+        id: 65
 
     - !!models.User
         email:      homer@simpson.com
