@@ -1,0 +1,75 @@
+@(user : User)
+
+@main("user") {
+  <div id="container" class="">     
+    <header class="header black-bg">
+      <a href="" class="logo"><b>PACEMAKER</b></a>
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </header>       
+    <div class="wrapper">         
+      <div class="col-lg-3 ds">
+        <h5 class="centered"><strong>FRIEND: </strong> @user.firstname @user.lastname</h5>  
+		<h3>INFO</h3>                          
+        <div class="desc">
+          <div class="details">
+            <p><muted><strong><i class="fa fa-clock-o"></i>EMAIL: </strong></muted>@user.email</p>
+          </div>
+        </div>
+        <div class="desc">
+          <div class="details">
+            <p><muted><strong><i class="fa fa-clock-o"></i>NATIONALITY: <strong></muted>@user.nationality</p>
+          </div>
+        </div>
+        <h3>RECENT ACTIVITIES</h3>
+        <div class="desc">
+          <div class="details">
+            @for(user <- user.activities) {
+	          <p><i class="fa fa-thumbs-up"></i><muted> @user.distance km @user.category</muted></p>
+	        } 
+          </div>
+        </div>      
+		<h3>STATS</h3>
+      </div>
+      <div class="col-lg-9">         
+        <div class="row mtbox">
+          <div class="col-md-2 col-sm-2 col-md-offset-2 box0">
+            <div class="box1">
+			  <a href="/users/@user.id/index"><span class=" fa fa-dashboard"></span><h4>Dashboard</h4></a>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-2 box0">
+            <div class="box1">
+			  <a href="/users/@user.id/reports/all"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-2 box0">
+            <div class="box1">
+			  <a href="/users/@user.id/activities"><span class="fa fa-calendar"></span><h4>Activities</h4></a>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-2 box0">
+            <div class="box1">
+			  <a href="/users/@user.id/friends"><span class="fa fa-users"></span><h4>Friends</h4></a>
+            </div>
+          </div>
+        </div>  	
+        <div class="centered">
+	      <h2>Activity Totals</h2>
+	    </div>	         
+        <div class="row mt">
+	  </div>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="text-center">
+    2015 - Pacemaker
+  </div>
+</footer>
+</div>
+ 
+}

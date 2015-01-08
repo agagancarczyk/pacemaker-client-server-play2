@@ -8,6 +8,7 @@ import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.friends;
+import views.html.showfriend;
 
 public class Friendships extends Controller {
 
@@ -68,6 +69,12 @@ public class Friendships extends Controller {
 		}
 		user.save();
 		return friends(user.id);
+	}
+	
+	public static Result showFriend(Long userId, Long friendId) {
+		User user = Accounts.getLoggedInUser();
+		User friend = User.findById(friendId);
+		return ok(showfriend.render(friend));
 	}
 
 }

@@ -14,6 +14,7 @@ POST    /users/createUser                                      controllers.Accou
 GET     /users/:userId/friends                                 controllers.Friendships.friends(userId : Long)
 POST 	/users/:userId/friends/addFriend/:targetUserId		   controllers.Friendships.addFriend(userId : Long, targetUserId : Long)
 POST 	/users/:userId/friends/removeFriend/:targetUserId	   controllers.Friendships.removeFriend(userId : Long, targetUserId : Long)
+GET     /users/:userId/showFriend/:friendId                    controllers.Friendships.showFriend(userId : Long, friendId : Long)
 
 GET     /postactivity                                          controllers.Activities.newActivity()
 GET     /users/:userId/activities                              controllers.Activities.activities(userId : Long)
@@ -29,29 +30,37 @@ GET     /users/:userId/reports/caloriesBurned/:category        controllers.Repor
 # Users
 GET     /api/:token/:userId/users                              controllers.PacemakerAPI.users(token : String, userId: Long)
 DELETE  /api/:token/:userId/users                              controllers.PacemakerAPI.deleteAllUsers(token : String, userId: Long)
-POST    /api/users                                             controllers.PacemakerAPI.createUser()
+POST    /api/users                              			   controllers.PacemakerAPI.createUser()
 
 GET     /api/:token/:userId/users/:id                          controllers.PacemakerAPI.user(token : String, userId: Long, id: Long)
-DELETE  /api/:token/users/:id                                  controllers.PacemakerAPI.deleteUser(token : String, id: Long)
-PUT     /api/:token/users/:id                                  controllers.PacemakerAPI.updateUser(token : String, id: Long)
+DELETE  /api/:token/:userId/users/:id                          controllers.PacemakerAPI.deleteUser(token : String, userId: Long, id: Long)
+PUT     /api/:token/:id/users/:id                              controllers.PacemakerAPI.updateUser(token : String, id: Long)
 
 POST	/api/:token/users/generateToken/:email				   controllers.PacemakerAPI.generateToken(token: String, email: String)
 
 # Activities
-GET     /api/:token/users/:userId/activities                   controllers.PacemakerAPI.activities(token : String, userId: Long)
+GET     /api/:token/:id/users/:userId/activities               controllers.PacemakerAPI.activities(token : String,id :Long, userId: Long)
 POST    /api/:token/users/:userId/activities                   controllers.PacemakerAPI.createActivity(token : String, userId: Long)
 
-GET     /api/:token/users/:userId/activities/:activityId       controllers.PacemakerAPI.activity(token : String, userId: Long, activityId:Long)
+GET     /api/:token/:id/users/:userId/activities/:activityId   controllers.PacemakerAPI.activity(token : String, id: Long, userId: Long, activityId:Long)
 DELETE  /api/:token/users/:userId/activities/:activityId       controllers.PacemakerAPI.deleteActivity(token : String, userId: Long, activityId:Long)
 PUT     /api/:token/users/:userId/activities/:activityId       controllers.PacemakerAPI.updateActivity(token : String, userId: Long, activityId:Long)
 
 # Locations
-GET     /api/:token/activities/:activityId/locations           controllers.PacemakerAPI.locations(token : String, activityId: Long)
-POST    /api/:token/activities/:activityId/locations           controllers.PacemakerAPI.createLocation(token : String, activityId: Long)
+GET     /api/:token/:id/activities/:activityId/locations       controllers.PacemakerAPI.locations(token : String,id : Long, activityId: Long)
+POST    /api/:token/:id/activities/:activityId/locations       controllers.PacemakerAPI.createLocation(token : String, id :Long, activityId: Long)
 
-GET     /api/:token/activities/:activityId/locations/:locationId      controllers.PacemakerAPI.location(token : String, activityId: Long, locationId: Long)
-DELETE  /api/:token/activities/:activityId/locations/:locationId      controllers.PacemakerAPI.deleteLocation(token : String, activityId:Long, locationId: Long)
-PUT     /api/:token/activities/:activityId/locations/:locationId      controllers.PacemakerAPI.updateLocation(token : String, activityId:Long, locationId: Long)
+GET     /api/:token/:id/activities/:activityId/locations/:locationId      controllers.PacemakerAPI.location(token : String,id: Long, activityId: Long, locationId: Long)
+DELETE  /api/:token/:id/activities/:activityId/locations/:locationId      controllers.PacemakerAPI.deleteLocation(token : String, id : Long, activityId:Long, locationId: Long)
+PUT     /api/:token/:id/activities/:activityId/locations/:locationId      controllers.PacemakerAPI.updateLocation(token : String, id: Long, activityId:Long, locationId: Long)
+
+# Friendships
+GET     /api/:token/users/:userId/friendships                  controllers.PacemakerAPI.friendships(token : String, userId: Long)
+POST    /api/:token/users/:userId/friendships                  controllers.PacemakerAPI.createFriendship(token : String, userId: Long)
+
+GET     /api/:token/:id/users/friendships/:friendshipId   	   controllers.PacemakerAPI.friendship(token : String, id: Long, friendshipId :Long)
+DELETE  /api/:token/users/:userId/friendships/:friendshipId    controllers.PacemakerAPI.deleteFriendship(token : String, userId: Long, friendshipId :Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

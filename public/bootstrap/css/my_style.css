@@ -38,6 +38,24 @@ ul.nav.nav-tabs
     color: white;
 }
 
+.btn-info {
+    background-color: #008AE6;
+    border-color: #008AE6;
+}
+
+.btn-info:hover {
+    background-color: #008AE6;
+}
+
+.btn-danger {
+    background-color: #E60000;
+    border-color: #E60000;
+}
+
+.btn-danger:hover {
+     background-color: #E60000;
+}
+
 ul li {
     list-style: none;
 }

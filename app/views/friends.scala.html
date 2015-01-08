@@ -19,9 +19,9 @@
         <button class="btn btn-find btn-block" type="submit"><i class="fa fa-search"></i> FIND</button>
 	    <hr>
       </form>
-      @for(i <- 0 until users.size) {    
-        <a href="/users/showuser/@users(i).id"> @users(i).firstname </a>   
-          @users(i).lastname  </td>   
+      @for(i <- 0 until users.size) {  
+        <a href="/users/@user.id/showFriend/@users(i).id"> @users(i).firstname</a>   
+          @users(i).lastname 
             <form action="/users/@user.id/friends/addFriend/@users(i).id" method="POST"> 
               <button class="btn btn-info btn-block" type="submit"><i class="fa fa-search"></i> ADD FRIEND</button>
             </form>
