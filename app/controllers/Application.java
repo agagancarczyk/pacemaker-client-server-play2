@@ -12,12 +12,8 @@ public class Application extends Controller {
     	return ok(index.render(user));
     }
    
-   // public static Result showUser(Long id)
-   // {
-      //User user =  User.findById(id);
-      //return ok(showuser.render(user));
-   // }
-    
-    
-    
+    public static Result swagger()
+    {
+        return ok(swagger.render());
+    } 
 }
