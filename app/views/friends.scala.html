@@ -3,14 +3,7 @@
 @main("Members") {
 
 <div id="container" class="">     
-  <header class="header black-bg">
-    <a href="" class="logo"><b>PACEMAKER</b></a>
-    <div class="top-menu">
-      <ul class="nav pull-right top-menu">
-        <li><a class="logout" href="/logout">Logout</a></li>
-      </ul>
-    </div>
-  </header>       
+  @header()     
   <div class="wrapper">   
     <div class="col-lg-3 df">   
       <h2>FIND FRIENDS</h2><br>                         
@@ -77,11 +70,7 @@
     </div>
   </div>
 </div>
-<footer class="site-footer">
-  <div class="text-center">
-    2015 - Pacemaker
-  </div>
-</footer>
+@footer()
 </div>
 
 }
