@@ -1,8 +1,11 @@
 @(user : User)
+@import java.lang.Float; var totalD=0.0
+@import java.lang.Integer; var totalC=0
 
 @main("user") {
+
   <div id="container" class="">     
-    @header()   
+    @header()      
     <div class="wrapper">         
       <div class="col-lg-3 ds">
         <h5 class="centered"><strong>FRIEND: </strong> @user.firstname @user.lastname</h5>  
@@ -26,34 +29,90 @@
           </div>
         </div>      
 		<h3>STATS</h3>
+        <div class="desc">
+          <div class="details">
+            <p><muted>TOTAL ACTIVITIES: 
+              @user.activities.size</muted>
+            </p>
+          </div>
+        </div>
+        <div class="desc">
+          <div class="details">
+            <p><muted>TOTAL DISTANCE: 
+              @for(act <- user.activities) {
+                @(totalD = totalD + act.distance)
+              }
+              @totalD mi</muted>
+            </p>
+          </div>
+        </div>
+        <div class="desc">
+          <div class="details">
+            <p><muted>TOTAL CALORIES: 
+               @for(act <- user.activities) {
+                @(totalC = totalC + act.caloriesBurned)
+              }
+              @totalC mi</muted>
+            </p>
+          </div>
+        </div>
       </div>
       <div class="col-lg-9">         
-        <div class="row mtbox">
-          <div class="col-md-2 col-sm-2 col-md-offset-2 box0">
-            <div class="box1">
-			  <a href="/users/@user.id/index"><span class=" fa fa-dashboard"></span><h4>Dashboard</h4></a>
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-2 box0">
-            <div class="box1">
-			  <a href="/users/@user.id/reports/all"><span class="fa fa-file-text"></span><h4>Reports</h4></a>
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-2 box0">
-            <div class="box1">
-			  <a href="/users/@user.id/activities"><span class="fa fa-calendar"></span><h4>Activities</h4></a>
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-2 box0">
-            <div class="box1">
-			  <a href="/users/@user.id/friends"><span class="fa fa-users"></span><h4>Friends</h4></a>
-            </div>
-          </div>
-        </div>  	
-        <div class="centered">
-	      <h2>Activity Totals</h2>
-	    </div>	         
+        <div class="row mtbox">	
+          <div class="centered">
+	        <h2>@user.firstname @user.lastname Activity Totals</h2>
+	      </div>
+	    </div> 	         
         <div class="row mt">
+          <div class="col-md-4 col-sm-4 mb">
+            <div class="white-panel pn">
+              <div class="white-header">
+		        <h5>TOTAL MI</h5>
+              </div>
+			  <div class="row">
+			    <div class="col-sm-6 col-xs-6 goleft">
+				  <p><i class="fa fa-road"></i></p>
+				</div>
+				<div class="col-sm-6 col-xs-6"></div>
+	          </div>
+	          <div class="centered">
+                <h2>@totalD</h2>
+	          </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 mb">
+            <div class="white-panel pn">
+              <div class="white-header">
+		        <h5>TOTAL ACTIVITIES</h5>
+              </div>
+			<div class="row">
+			  <div class="col-sm-6 col-xs-6 goleft">
+		        <p><i class="fa fa-car"></i></p>
+		      </div>
+		      <div class="col-sm-6 col-xs-6"></div>
+	        </div>
+	        <div class="centered">
+              <h2>@user.activities.size</h2>
+	        </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 mb">
+          <div class="white-panel pn">
+            <div class="white-header">
+		      <h5>TOTAL CALORIES</h5>
+            </div>
+			<div class="row">
+			  <div class="col-sm-6 col-xs-6 goleft">
+		        <p><i class="fa fa-fire"></i></p>
+		      </div>
+		      <div class="col-sm-6 col-xs-6"></div>
+	        </div>
+	        <div class="centered">
+              <h2>@totalC</h2>
+	        </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-4 centered"></div>
 	  </div>
     </div>
   </div>

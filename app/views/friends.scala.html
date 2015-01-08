@@ -16,14 +16,14 @@
         <a href="/users/@user.id/showFriend/@users(i).id"> @users(i).firstname</a>   
           @users(i).lastname 
             <form action="/users/@user.id/friends/addFriend/@users(i).id" method="POST"> 
-              <button class="btn btn-info btn-block" type="submit"><i class="fa fa-search"></i> ADD FRIEND</button>
+              <button class="btn btn-info btn-block" type="submit"><i class="fa fa-plus-circle"></i> ADD FRIEND</button>
             </form>
             <form action="/users/@user.id/friends/removeFriend/@users(i).id" method="POST"> 
-              <button class="btn btn-danger btn-block" type="submit"><i class="fa fa-search"></i> REMOVE FRIEND</button>
+              <button class="btn btn-danger btn-block" type="submit"><i class="fa fa-minus-circle"></i> REMOVE FRIEND</button>
             </form>  
           </a>
         }
-    </div>
+    <br></div>
   <div class="col-lg-9">         
     <div class="row mtbox">
       <div class="col-md-2 col-sm-2 col-md-offset-2 box0">
@@ -47,24 +47,29 @@
         </div>
       </div>
     </div>  
-    <form action="" method="">
-	  <div class="centered">
-        <h2 class="form-login-heading">My Friends and Family</h2>
-      </div>
-    </form>	
+	<div class="centered">
+      <h2 class="form-login-heading">My Friends and Family</h2>
+    </div>
     <div class="row">
       <div class="col-md-12 mb"><br>
-        <div class="darkgrey-panel pn"><br>
-          <div class="darkgrey-header">
- 	        <h5>Friend name</h5>
+        <div class="white-panel pn"><br>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <h4><strong>Details</strong></h4>
+              </thead>
+              <tr>
+                <td><strong><span class="fa fa-users"></span> Full Name</strong></td>
+                <td><strong><span class="fa fa-envelope"></span> Email</strong></td>
+              </tr>
+              @for(friendship <- user.friendships) {
+                <tr>
+                  <td><h4>@friendship.targetUser.firstname @friendship.targetUser.lastname</h4></td>  
+                  <td><h4>@friendship.targetUser.email</h4></td>  
+                </tr>
+              }
+            </table>
           </div>
-          <p>Date example</p>
-          @for(friendship <- user.friendships) {
-          <tr>
-            <td>@friendship.targetUser.firstname </td>  
-            <td>@friendship.targetUser.lastname  </td> 
-          </tr>
-        }
         </div>
 	  </div>
     </div>

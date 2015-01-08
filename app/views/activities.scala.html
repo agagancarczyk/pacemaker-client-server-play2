@@ -6,32 +6,36 @@
     @header()  
     <div class="wrapper">         
       <div class="col-lg-3 ds">
-		<h2>ACTIVITIES</h2>                          
-        <div class="desc">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <td><strong>Date</strong></td>
-                <td><strong>Type</strong></td>
-                <td><strong>Distance</strong></td>
-              </tr>
-            </thead>
-            <tbody>
-              <ul>               
-                @for(act <- user.activities) {
-                  <tr class='clickableRow' href="/users/@user.id/activities/@act.id">
-                    <td>@act.category</td>  
-		            <td>@act.distance</td>  
-		            <td>@act.date</td> 
-          	      </tr>
-                }
-              </ul>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-lg-9">         
-        <div class="row mtbox">
+       @if(user.activities.isEmpty) {
+         <h3>NO ACTIVITIES</h3><br>         
+       } else {
+         <h2>ACTIVITIES</h2>                          
+         <div class="desc">
+           <table class="table table-hover">
+             <thead>
+               <tr>
+                 <td><strong>Type</strong></td>
+                 <td><strong>Distance</strong></td>
+                 <td><strong>Date</strong></td>
+               </tr>
+             </thead>
+             <tbody>
+               <ul> 
+                 @for(act <- user.activities) {
+                   <tr class='clickableRow' href="/users/@user.id/activities/@act.id">
+                     <td>@act.category</td>  
+		             <td>@act.distance</td>  
+		             <td>@act.date</td> 
+          	       </tr>
+                 }
+               </ul>
+             </tbody>
+           </table>
+         </div>        
+       }
+     </div>
+     <div class="col-lg-9">         
+       <div class="row mtbox">
           <div class="col-md-2 col-sm-2 col-md-offset-2 box0">
             <div class="box1">
 	          <a href="/users/@user.id/index"><span class="fa fa-dashboard"></span><h4>Dashboard</h4></a>
@@ -52,10 +56,15 @@
 	          <a href="/users/@user.id/friends"><span class="fa fa-users"></span><h4>Friends</h4></a>
             </div>
           </div>
-        </div>  	
+        </div>  
+        @if(user.activities.isEmpty) {
+          <div class="centered">
+            <h3>No Activities Found</h3>
+          </div>
+        } else {
         <div class="centered">
-	      <h2>Activity: @activity.category</h2><p>(No: @activity.id)</p>
-	    </div>	         
+          <h2>Activity: @activity.category</h2><h3>(No: @activity.id)</h2><br>
+        </div>	         
         <div class="row mt">
           <div class="col-md-3 col-sm-3 mb">
             <div class="activities-white-panel pn">
@@ -66,23 +75,23 @@
 			    <div class="col-sm-3 col-xs-3 goleft">
 		          <p><i class="fa fa-road"></i></p>
 		        </div>
-		        <div class="col-sm-6 col-xs-6"><h2>@activity.distance</h2></div>
+                <div class="col-sm-6 col-xs-6"><h2>@activity.distance</h2></div>
 	          </div>
             </div>
           </div>
-          <div class="col-md-3 col-sm-3 mb">
-            <div class="activities-white-panel pn">
-              <div class="white-header">
-		        <h5>DURATION</h5>
-              </div>
+        <div class="col-md-3 col-sm-3 mb">
+          <div class="activities-white-panel pn">
+            <div class="white-header">
+		      <h5>DURATION</h5>
+            </div>
 	        <div class="row">
 	          <div class="col-sm-3 col-xs-3 goleft">
-		        <p><i class="fa fa-clock-o"></i></p>
+		        <p><i class="fa fa-paper-plane-o"></i></p>
 		      </div>
-		      <div class="col-sm-6 col-xs-6"><h2>@activity.duration</h2></div>
+              <div class="col-sm-6 col-xs-6"><h2>@activity.duration</h2></div>
 	        </div>
           </div>
-        </div>
+        </div>  
         <div class="col-md-3 col-sm-3 mb">
           <div class="activities-white-panel pn">
             <div class="white-header">
@@ -92,7 +101,7 @@
 	          <div class="col-sm-3 col-xs-3 goleft">
 		        <p><i class="fa fa-paper-plane-o"></i></p>
 		      </div>
-		      <div class="col-sm-6 col-xs-6"><h2>@activity.averageSpeed</h2></div>
+              <div class="col-sm-6 col-xs-6"><h2>@activity.averageSpeed</h2></div>
 	        </div>
           </div>
         </div>
@@ -109,7 +118,8 @@
 	        </div>
           </div>
         </div>
-      </div>
+      </div><br>
+      }
     </div> 
   </div>
  </div>

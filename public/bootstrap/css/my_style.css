@@ -1,9 +1,5 @@
 /*
-Template Name: DASHGUM FREE - Bootstrap 3.2 Admin Theme
-Template Version: 1.0
-Author: Carlos Alvarez
-Website: http://blacktie.co
-Premium: http://www.gridgum.com
+Pacemaker Styling
 */
 
 /* Import fonts */
@@ -117,8 +113,6 @@ select#type
 	outline: none !important;
 	text-decoration: none;
 }	
-
-
 
 /*Theme Backgrounds*/
 
@@ -1183,6 +1177,14 @@ PANELS CONFIGURATIONS
 	color: #ccd1d9;
 }
 
+.white-panel h5 {
+    color: #808080;
+}
+
+.white-panel h2 {
+	color: 	#808080;
+}
+
 .white-panel p {
 	margin-top: 5px;
 	font-weight: 700;
@@ -1212,7 +1214,7 @@ PANELS CONFIGURATIONS
 	background: #ffffff;
 	color: #ccd1d9;
 	width: 200px;
-	height: 150px;
+	height: 176px;
 }
 
 .activities-white-panel p {
@@ -1220,6 +1222,15 @@ PANELS CONFIGURATIONS
 	font-weight: 700;
 	margin-left: 15px;
 }
+
+.activities-white-panel h5 {
+    color: #808080;
+}
+
+.activities-white-panel h2 {
+	color: 	#808080;
+}
+
 .activities-white-panel .white-header {
 	background: #f4f4f4;
 	padding: 3px;
@@ -1237,17 +1248,25 @@ PANELS CONFIGURATIONS
 	font-size: 14px;
 }
 
-/* Dark Grey*/
+/* White */
 
-.darkgrey-panel {
+.white-panel {
 	text-align: center;
-	background: #989898;
+	background: white;
+	color : #808080;
+	width: 100%;
+	overflow-y: auto;
+	_overflow: auto;
+	margin: 0 0 1em;
 }
-.darkgrey-panel .darkgrey-header {
+.white-panel .white-header {
 	background: transparent;
 	padding: 3px;
 	margin-bottom: 15px;
 }
+
+/* Dark Grey */
+
 .darkgrey-panel h1 {
 	color: #f2f2f2;
 }
