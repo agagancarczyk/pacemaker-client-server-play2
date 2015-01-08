@@ -42,6 +42,9 @@ public class User extends Model {
 		this.nationality = nationality;
 	}
 
+	 /*
+     * Constructor with token parameter allows to test secure API.
+     */
 	public User(String firstname, String lastname, String email, String password,
 			String nationality, String token) {
 		this.firstname = firstname;
@@ -80,25 +83,49 @@ public class User extends Model {
 		}
 	}
 
+    /*
+	 * Method allows to find a user by email.
+	 * 
+	 * @param email 
+	 *          String
+	 */
 	public static User findByEmail(String email) {
 		return User.find.where().eq("email", email).findUnique();
 	}
 
+	/*
+	 * Method allows to find a user by id.
+	 * 
+	 * @param id 
+	 *          Long
+	 */
 	public static User findById(Long id) {
 		return find.where().eq("id", id).findUnique();
 	}
 
+    /*
+	 * Method allows to check user's password when logging into.
+	 * 
+	 * @param password 
+	 *           String
+	 */
 	public boolean checkPassword(String password) {
 
 		return this.password.equals(password);
 	}
 
+	/*
+	 * Method allows to find all users in the users list.
+	 */
 	public static List<User> findAll() {
 		List<User> users = find.all();
 		users.remove(User.findByEmail("admin@tssg.org"));
 		return users;
 	}
 
+	/*
+	 * Method allows to delete all users.
+	 */
 	public static void deleteAll() {
 		for (User user : User.findAll()) {
 			// if (!("admin@tssg.org".equals(user.email)
@@ -107,6 +134,9 @@ public class User extends Model {
 		}
 	}
 
+	/*
+	 * Method allows to generate a token for a user.
+	 */
 	public void generateAPItoken() {
 		this.token = TokenGenerator.nextToken();
 		this.save();

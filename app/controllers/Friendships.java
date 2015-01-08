@@ -12,6 +12,12 @@ import views.html.showfriend;
 
 public class Friendships extends Controller {
 
+	 /*
+	  * Method allows to search for friends.
+	  * 
+	  * @param userId 
+	  *          Long
+	  */
 	public static Result friends(Long userId) {
 		User user = Accounts.getLoggedInUser();
 
@@ -37,6 +43,14 @@ public class Friendships extends Controller {
 		return ok(friends.render(user, users));
 	}
 
+	 /*
+	  * Method allows to add and return the added friend.
+	  * 
+	  * @param userId 
+	  *          Long
+	  * @param targetUserId
+	  *          Long
+	  */
 	public static Result addFriend(Long userId, Long targetUserId) {
 		User user = Accounts.getLoggedInUser();
 		User targetUser = User.findById(targetUserId);
@@ -54,6 +68,14 @@ public class Friendships extends Controller {
 		return friends(user.id);
 	}
 
+	 /*
+	  * Method allows to remove previously added friend.
+	  * 
+	  * @param userId 
+	  *          Long
+	  * @param targetUserId
+	  *          Long
+	  */
 	public static Result removeFriend(Long userId, Long targetUserId) {
 		User user = Accounts.getLoggedInUser();
 		User targetUser = User.findById(targetUserId);
@@ -71,6 +93,14 @@ public class Friendships extends Controller {
 		return friends(user.id);
 	}
 	
+	 /*
+	  * Method allows to show friend's details.
+	  * 
+	  * @param userId 
+	  *          Long
+	  * @param friendId
+	  *          Long
+	  */
 	public static Result showFriend(Long userId, Long friendId) {
 		User user = Accounts.getLoggedInUser();
 		User friend = User.findById(friendId);

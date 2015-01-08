@@ -20,7 +20,9 @@ public class JsonParser
     private static JSONSerializer  graphDataSerializer = new JSONSerializer().exclude("class");
     private static JSONSerializer  friendshipSerializer = new JSONSerializer().exclude("class");
 	
-	//User
+    /*
+   	 * User parsers.
+   	 */
 	public static User renderUser(String json)
 	{
 	  return new JSONDeserializer<User>().deserialize(json, User.class); 
@@ -36,7 +38,9 @@ public class JsonParser
 	  return new JSONDeserializer<ArrayList<User>>().use("values", User.class).deserialize(json);
 	}   
 	
-	//Activity
+	/*
+     * Activity parsers.
+     */
 	public static Activity renderActivity(String json)
 	{
 		System.out.println(json);
@@ -55,7 +59,9 @@ public class JsonParser
 	  return new JSONDeserializer<ArrayList<Activity>>().use("values", Activity.class).deserialize(json);
 	}  
 	  
-	//Location
+	/*
+     * Location parsers.
+     */
     public static Location renderLocation(String json)
     {
 	  Location location = new JSONDeserializer<Location>().deserialize(json,   Location.class);
@@ -76,7 +82,9 @@ public class JsonParser
     	return graphDataSerializer.serialize(obj);
     }
     
-  //Friendship
+    /*
+	 * Friendship parsers.
+	 */
     public static Friendship renderFriendship(String json)
     {
 	  Friendship friendship = new JSONDeserializer<Friendship>().deserialize(json,   Friendship.class);

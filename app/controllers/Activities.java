@@ -12,19 +12,34 @@ public class Activities extends Controller {
 	
     private static final Form<Activity> activityForm = Form.form(Activity.class);
     
+    /*
+     * Method allows to render a new activity page.
+     */
     public static Result newActivity()
     {
   	   User user = Accounts.getLoggedInUser();
        return ok(postactivity.render(user));
     }
     
+    /*
+     * Method allows render users most recent activity.
+     * 
+     * @param userId 
+     *          Long
+     */
 	public static Result activities(Long userId)
     {
 	  User user = Accounts.getLoggedInUser();
 	  
 	  return ok(activities.render(user, getLastActivity(user)));
 	}
-	    
+	 
+	/*
+	 * Method allows user to create/upload a new activity.
+	 * 
+	 * @param userId 
+	 *          Long
+	 */
 	public static Result uploadActivity(Long userId)
 	{
 	  User user = Accounts.getLoggedInUser();
@@ -39,6 +54,14 @@ public class Activities extends Controller {
 	  return ok(activities.render(user, getLastActivity(user)));
 	}
 	
+	 /*
+	  * Method allows show users activity.
+	  * 
+	  * @param userId 
+	  *          Long
+	  * @param activityId
+	  *          Long
+	  */
 	public static Result showActivity(Long userId, Long activityId)
     {
 	  User user = Accounts.getLoggedInUser();
@@ -46,6 +69,12 @@ public class Activities extends Controller {
 	  return ok(activities.render(user, act));
 	}
 	
+	 /*
+	  * Method allows to get last activity
+	  * 
+	  * @param user 
+	  *          User
+	  */
 	private static Activity getLastActivity(User user)
 	{
 		Activity act = null;

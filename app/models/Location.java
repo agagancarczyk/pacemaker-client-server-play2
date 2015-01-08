@@ -58,16 +58,31 @@ public class Location extends Model
         .add("Longtitude", longtitude).toString();
   }
   
+  /*
+   * Method allows to find a location by id.
+   * 
+   * @param id 
+   *          Long
+   */
   public static Location findById(Long id)
   {
 	 return find.where().eq("id", id).findUnique();
   }
 
+  /*
+   * Method allows to find all locations in a list of locations.
+   */
   public static List<Location> findAll()
   {
     return find.all();
   }
 
+  /*
+   * Method allows to delete all locations.
+   * 
+   * @param id 
+   *          Long
+   */
   public static void deleteAll()
   {
     for (Location location: Location.findAll())

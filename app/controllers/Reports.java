@@ -12,6 +12,14 @@ import views.html.reports;
 
 public class Reports extends Controller {
 
+	 /*
+     * Method allows render users reports.
+     * 
+     * @param userId 
+     *          Long
+     * @param category
+     *          String
+     */
 	public static Result reports(Long userId, String category) {
 		User user = Accounts.getLoggedInUser();
 		List<Activity> activity = user.activities;
@@ -19,6 +27,14 @@ public class Reports extends Controller {
 		return ok(reports.render(user, activity, category));
 	}
 
+	 /*
+     * Method allows to create a distance graph.
+     * 
+     * @param userId 
+     *          Long
+     * @param category
+     *          String
+     */
 	public static Result distance(Long userId, String category) {
 		User user = Accounts.getLoggedInUser();
 		List<Activity> activities = user.activities;
@@ -34,6 +50,14 @@ public class Reports extends Controller {
 		return ok(renderGraphData(removeNull(str)));
 	}
 
+	 /*
+     * Method allows to create a duration graph.
+     * 
+     * @param userId 
+     *          Long
+     * @param category
+     *          String
+     */
 	public static Result duration(Long userId, String category) {
 		User user = Accounts.getLoggedInUser();
 		List<Activity> activities = user.activities;
@@ -52,6 +76,14 @@ public class Reports extends Controller {
 		return ok(renderGraphData(removeNull(str)));
 	}
 
+	 /*
+     * Method allows to create a calories burned graph.
+     * 
+     * @param userId 
+     *          Long
+     * @param category
+     *          String
+     */
 	public static Result caloriesBurned(Long userId, String category) {
 		User user = Accounts.getLoggedInUser();
 		List<Activity> activities = user.activities;
@@ -66,6 +98,10 @@ public class Reports extends Controller {
 		return ok(renderGraphData(removeNull(str)));
 	}
 
+	 /*
+     * Method removes null entries from the parent array.
+     * @return array of arrays in which there is no null values.
+     */
 	private static Object[][] removeNull(Object[][] a) {
 		System.out.println(a.toString());
 

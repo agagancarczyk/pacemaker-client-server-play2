@@ -10,7 +10,9 @@ import models.*;
 
 public class PacemakerAPI extends Controller {
 
-	// Users
+	/*
+	 * API methods for User
+	 */
 	public static Result users(String token, Long userId) {
 		User user = User.findById(userId);
 		if (user.token != null && token.equals(user.token)) {
@@ -74,7 +76,9 @@ public class PacemakerAPI extends Controller {
 		}
 	}
 
-	// Activities
+	/*
+	 * API methods for Activity
+	 */
 	public static Result activities(String token, Long id, Long userId) {
 		User secureUsr = User.findById(userId);
 		if (secureUsr == null)
@@ -176,7 +180,9 @@ public class PacemakerAPI extends Controller {
 		}
 	}
 
-	// Locations
+	/*
+	 * API methods for Location
+	 */
 	public static Result locations(String token, Long id, Long activityId) {
 		User secureUsr = User.findById(id);
 		if (secureUsr == null) {
@@ -296,7 +302,9 @@ public class PacemakerAPI extends Controller {
 		return ok(user.token);
 	}
 	
-	// Friendships
+	/*
+	 * API methods for Friendship
+	 */
 		public static Result friendships(String token, Long userId) {
 			User secureUsr = User.findById(userId);
 			if (secureUsr == null)

@@ -12,21 +12,33 @@ public class Accounts extends Controller {
 	
     private static final Form<User> userForm = Form.form(User.class);
     
+    /*
+     * Method allows log out.
+     */
     public static Result logout() {
  	   session().clear();
  	   return redirect ("/");
  	}
      
+    /*
+     * Method renders login page.
+     */
     public static Result login()
     {
        return ok(login.render());
     }
      
+    /*
+     * Method renders sign up page.
+     */
     public static Result signup()
     {
        return ok(signup.render());
     }
      
+    /*
+     * Method allows to authenticate a user.
+     */
     public static Result authenticate () {
     	Form<User> boundForm = userForm.bindFromRequest();
     	System.out.println(boundForm.toString());
@@ -45,6 +57,9 @@ public class Accounts extends Controller {
 		}
 	}
     
+    /*
+     * Method allows to create a new user. 
+     */
     public static Result createUser()
     {
     	Form<User> boundForm = userForm.bindFromRequest();
@@ -53,6 +68,9 @@ public class Accounts extends Controller {
         return redirect ("/");
     }
     
+    /*
+     * Method allows to get currently logged in user.
+     */
     public static User getLoggedInUser() {
 		User user = null;
 		if (session().containsKey("logged_in_userid")){

@@ -67,19 +67,28 @@ import com.google.common.base.Objects;
 	    }
 	  }
 
+	  /*
+	   * Method allows to find a friendship by id.
+	   * 
+	   * @param id 
+	   *          Long
+	   */
 	  public static Friendship findById(Long id)
 	  {
 	    return find.where().eq("id", id).findUnique();
 	  }
 	  
-	  
-	  
-
+	  /*
+	   * Method allows to find all friendships in a list of friendships.
+	   */
 	  public static List<Friendship> findAll()
 	  {
 	    return find.all();
 	  }
 
+	  /*
+	   * Method allows to delete all friendships.
+	   */
 	  public static void deleteAll()
 	  {
 	    for (Friendship friendship: Friendship.findAll())

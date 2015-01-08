@@ -94,16 +94,28 @@ public class Activity extends Model
     }
   }
 
+  /*
+   * Method allows to find an activity by its id.
+   * 
+   * @param id 
+   *          Long
+   */
   public static Activity findById(Long id)
   {
     return find.where().eq("id", id).findUnique();
   }
-
+  
+  /*
+   * Method allows to find all activities in the list of activities.
+   */
   public static List<Activity> findAll()
   {
     return find.all();
   }
 
+  /*
+   * Method allows to deleted all activities.
+   */
   public static void deleteAll()
   {
     for (Activity activity: Activity.findAll())
