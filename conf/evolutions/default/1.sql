@@ -8,10 +8,10 @@ create table my_activity (
   user_id                   bigint not null,
   category                  varchar(255),
   location                  varchar(255),
-  distance                  double,
+  distance                  decimal,
   date                      timestamp,
   duration                  varchar(255),
-  average_speed             double,
+  average_speed             decimal,
   calories_burned           integer,
   constraint pk_my_activity primary key (id))
 ;
