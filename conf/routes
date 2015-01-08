@@ -65,7 +65,7 @@ GET     /api/:token/:id/users/friendships/:friendshipId   	   controllers.Pacema
 DELETE  /api/:token/users/:userId/friendships/:friendshipId    controllers.PacemakerAPI.deleteFriendship(token : String, userId: Long, friendshipId :Long)
 
 # Swagger
-GET     /documentation/index                                   controllers.Assets.at("/public",file="/documentation/index.html")
+GET     /documentation/index                                   controllers.Assets.at(path="/public",file="/documentation/index.html")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

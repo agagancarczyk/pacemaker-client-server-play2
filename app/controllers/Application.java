@@ -11,9 +11,4 @@ public class Application extends Controller {
     	User user = Accounts.getLoggedInUser(); 
     	return ok(index.render(user));
     }
-   
-    public static Result swagger()
-    {
-        return ok(swagger.render());
-    } 
 }
